@@ -10,8 +10,9 @@ import TextField from '@material-ui/core/TextField';
 const styles = theme => ({
   container: {
     display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
+    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   textField: {
     marginLeft: theme.spacing.unit,
