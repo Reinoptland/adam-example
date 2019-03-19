@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import MainForm from './components/MainForm';
+import MainForm from './components/searchForm/MainForm';
 
 class App extends Component {
   render() {

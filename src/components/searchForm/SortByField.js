@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from './Header';
+import Header from '../Header';
 
 import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
