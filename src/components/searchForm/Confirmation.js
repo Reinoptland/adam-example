@@ -17,6 +17,11 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  footer: {
+  	display: 'flex',
+  	width: '100%',
+  	justifyContent: 'space-evenly'
+  },
   list: {
     width: '100%',
     maxWidth: 360,
@@ -26,9 +31,9 @@ const styles = theme => ({
 
 class Confirmation extends React.Component {
 
-	continue = e => {
+	search = e => {
   		e.preventDefault();
-  		this.props.nextStep();
+  		console.log(this.props.values);
   	};
 
   	back = e => {
@@ -68,7 +73,7 @@ class Confirmation extends React.Component {
 				</List>
 				<div className={classes.footer}>
 	        	<Button
-		          	variant="contained"
+		          	variant="outlined"
 		          	color="primary"
 		          	className={classes.button}
 		          	onClick={this.back}>
@@ -78,8 +83,8 @@ class Confirmation extends React.Component {
 		          	variant="contained"
 		          	color="primary"
 		          	className={classes.button}
-		          	onClick={this.continue}>
-		          	Next
+		          	onClick={this.search}>
+		          	Search
 		          	</Button>
 	          </div>
 			</div>

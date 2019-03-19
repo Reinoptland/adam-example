@@ -6,7 +6,7 @@ const Footer = ({ noBack, back, forward }) => (
 			<div style={{display: 'flex', justifyContent: 'space-evenly'}}>
 		     		<Button
 		     			style={noBack ? {display: 'none'} : {}}
-				    	variant="contained"
+				    	variant="outlined"
 				    	color="primary"
 				    	onClick={back}>
 				        Back
