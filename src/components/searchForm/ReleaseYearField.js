@@ -1,21 +1,17 @@
 import React from 'react';
 
 import Header from './Header';
+import Footer from './Footer';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center'
-  },
-  footer: {
-  	display: 'flex',
-  	justifyContent: 'space-evenly'
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -90,22 +86,10 @@ class ReleaseYearField extends React.Component {
 			          variant="outlined"
 	        		/>
 				  </form>
-				  <div className={classes.footer}>
-		        	<Button
-			          	variant="contained"
-			          	color="primary"
-			          	className={classes.button}
-			          	onClick={this.back}>
-			          	Back
-			          	</Button>
-			          <Button
-			          	variant="contained"
-			          	color="primary"
-			          	className={classes.button}
-			          	onClick={this.continue}>
-			          	Next
-			          	</Button>
-		          </div>
+				  <Footer
+		          	back={this.back}
+		          	forward={this.continue}
+	          		/>
 	         </React.Fragment>
 			);
 	}

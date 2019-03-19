@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import Header from './Header';
+import Footer from './Footer';
 
 import { withStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
 
 // Define CSS styles:
 const styles = theme => ({
@@ -20,10 +20,6 @@ const styles = theme => ({
   formGroup: {
   	display: 'flex',
   	height: 200
-  },
-  button : {
-  	margin: theme.spacing.unit,
-  	alignSelf: 'center'
   }
 });
 
@@ -35,8 +31,8 @@ class GenresField extends React.Component {
 
   componentDidMount() {
 		// Fetch genres from theMovieDb:
-		axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=36a5d44b2c49ac8525928003d3750b0c&language=en-US')
-		.then((response) => this.setState({genres : response.data.genres}));
+			axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=36a5d44b2c49ac8525928003d3750b0c&language=en-US')
+			.then((response) => this.setState({genres : response.data.genres}));
 	}
 
   continue = e => {
@@ -66,13 +62,10 @@ class GenresField extends React.Component {
 	          				label={genre.name} />
 	          	})}
 	          </FormGroup>
-	          <Button
-	          	variant="contained"
-	          	color="primary"
-	          	className={classes.button}
-	          	onClick={this.continue}>
-	          	Next
-	          	</Button>
+	          <Footer
+	          	noBack={true}
+	          	forward={this.continue}
+	          	/>
 	        </FormControl>
         </React.Fragment>
     );

@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Header from './Header';
+import Footer from './Footer';
 
 import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   root: {
@@ -15,10 +15,6 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     height: 200
-  },
-  footer: {
-  	display: 'flex',
-  	justifyContent: 'space-evenly'
   },
   formControl: {
     margin: theme.spacing.unit,
@@ -81,22 +77,10 @@ class SortByField extends React.Component {
 	          </Select>
 	         </FormControl>
         	</form>
-        	<div className={classes.footer}>
-	        	<Button
-		          	variant="contained"
-		          	color="primary"
-		          	className={classes.button}
-		          	onClick={this.back}>
-		          	Back
-		          	</Button>
-		          <Button
-		          	variant="contained"
-		          	color="primary"
-		          	className={classes.button}
-		          	onClick={this.continue}>
-		          	Next
-		          	</Button>
-	          </div>
+        	<Footer
+	          	back={this.back}
+	          	forward={this.continue}
+	          	/>
         	</React.Fragment>
 			)
 	}
