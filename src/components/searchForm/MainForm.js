@@ -13,8 +13,8 @@ class MainForm extends React.Component {
 		this.state = {
 			step : 1,
 			selectedGenres : [],
-			minRating : '',
-			maxRating : '',
+			minRating : '1.0',
+			maxRating : '5.0',
 			minYear : '1874',
 			maxYear : '2019',
 			sortBy : ''
