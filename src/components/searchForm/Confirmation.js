@@ -81,7 +81,8 @@ class Confirmation extends React.Component {
 		          	</Button>
 		          <Button
 		          	variant="contained"
-		          	color="primary"
+		          	color="secondary"
+		          	size="large"
 		          	className={classes.button}
 		          	onClick={this.search}>
 		          	Search
