@@ -31,11 +31,6 @@ const styles = theme => ({
 
 class Confirmation extends React.Component {
 
-	search = e => {
-  		e.preventDefault();
-  		console.log(this.props.values);
-  	};
-
   	back = e => {
 	    e.preventDefault();
 	    this.props.prevStep();
@@ -43,7 +38,7 @@ class Confirmation extends React.Component {
 
 	render() {
 
-		const { classes } = this.props;
+		const { classes, searchMovies } = this.props;
 		const { values : { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy } } = this.props;
 		return (
 			<div className={classes.root}>
@@ -84,7 +79,7 @@ class Confirmation extends React.Component {
 		          	color="secondary"
 		          	size="large"
 		          	className={classes.button}
-		          	onClick={this.search}>
+		          	onClick={searchMovies}>
 		          	Search
 		          	</Button>
 	          </div>

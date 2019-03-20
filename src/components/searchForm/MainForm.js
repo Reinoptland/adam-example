@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { collectSearchValues } from '../../actions';
 
 import GenresField from './GenresField';
 import UserRatingsField from './UserRatingsField';
@@ -17,7 +19,8 @@ class MainForm extends React.Component {
 			maxRating : '5.0',
 			minYear : '1874',
 			maxYear : '2019',
-			sortBy : ''
+			sortBy : '',
+			showForm : true,
 		}
 	}
 
@@ -48,20 +51,34 @@ class MainForm extends React.Component {
 
   	handleChange = event => {
     	this.setState({ [event.target.name]: event.target.value });
-  	};
+  	}
 
   	handleReleaseYear = name => event => {
     	this.setState({[name]: event.target.value});
-	};
+	}
+
+	searchMovies = e => {
+		e.preventDefault();
+
+		const { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy } = this.state;
+		const values = { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy };
+		this.props.collectSearchValues(values);
+		this.setState({showForm : false});
+	}
+
+	componentWillUnmount() {
+		console.log('form unmounted');
+	}
 
 
 	render() {
 		
-		const { step } = this.state;
+		const { step, showForm } = this.state;
 		const { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy } = this.state;
 		const values = { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy };
 
-		switch(step) {
+		if(showForm) {
+			switch(step) {
 			case 1:
 			return <GenresField
 					nextStep={this.nextStep}
@@ -89,11 +106,16 @@ class MainForm extends React.Component {
 			return <Confirmation
 					nextStep={this.nextStep}
 					prevStep={this.prevStep}
+					searchMovies={this.searchMovies}
 					values={values} />
 			default:
 			return null;
 		}
+		} else {
+			return null;
+		}
+		
 	}
 }
 
-export default MainForm;
+export default connect(null, { collectSearchValues })(MainForm);
