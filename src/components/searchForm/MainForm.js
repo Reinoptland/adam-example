@@ -19,7 +19,7 @@ class MainForm extends React.Component {
 			maxRating : '5.0',
 			minYear : '1874',
 			maxYear : '2019',
-			sortBy : '',
+			sortBy : 'Popularity Descending',
 			showForm : true,
 		}
 	}
