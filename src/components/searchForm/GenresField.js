@@ -42,7 +42,6 @@ class GenresField extends React.Component {
 	componentDidUpdate(prevProps, prevState) {
 		// If checkbox is clicked, remove errorText if needed:
 		if(this.state.errorText && this.props.values.selectedGenres.length === 1) {
-			console.log('errortext is being removed!');
 			this.setState({errorText : ''});
 		}
 	}
