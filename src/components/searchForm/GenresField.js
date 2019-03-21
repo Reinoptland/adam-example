@@ -10,6 +10,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Typography from '@material-ui/core/Typography';
 
 // Define CSS styles:
 const styles = theme => ({
@@ -26,21 +27,51 @@ const styles = theme => ({
 class GenresField extends React.Component {
 
 	state = {
-    genres : []
-  };
+    genres : [],
+    errorText : ''
+  	};
 
-  componentDidMount() {
+  	componentDidMount() {
 		// Fetch genres from theMovieDb:
 			axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=36a5d44b2c49ac8525928003d3750b0c&language=en-US')
 			.then((response) => this.setState({genres : response.data.genres}));
 	}
 
-  continue = e => {
-  	e.preventDefault();
-  	this.props.nextStep();
-  }
+	componentDidUpdate(prevProps, prevState) {
+		// If checkbox is clicked, remove errorText if needed:
+		if(this.state.errorText && this.props.values.selectedGenres.length === 1) {
+			console.log('errortext is being removed!');
+			this.setState({errorText : ''});
+		}
+	}
 
-  render() {
+	validate() {
+		let isError = false, errorText = '';
+
+		// Check to see if no checkboxes are selected:
+		if(this.props.values.selectedGenres.length === 0) {
+			isError = true;
+			errorText = 'You need to select at least one genre!';
+		}
+
+		this.setState({errorText});
+
+		return isError;
+	}
+
+	continue = e => {
+	  	e.preventDefault();
+	  	const err = this.validate();
+	  	
+	  	if(!err) {
+	  		this.props.nextStep();
+	  	}
+	  	
+  	}
+
+
+
+  	render() {
     
     const { classes, values, handleGenreSelection } = this.props;
     const { genres } = this.state;
@@ -62,6 +93,9 @@ class GenresField extends React.Component {
 	          				label={genre.name} />
 	          	})}
 	          </FormGroup>
+	          <Typography variant="body1" color="error" align="right" gutterBottom>
+	          {this.state.errorText}
+	          </Typography>
 	          <Footer
 	          	noBack={true}
 	          	forward={this.continue}
