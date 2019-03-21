@@ -67,9 +67,6 @@ class UserRatingsField extends React.Component {
 	            onChange={handleChange}
 	            inputProps={{ name: 'minRating'}}
 	          >
-	            <MenuItem value="">
-	              <em>None</em>
-	            </MenuItem>
 	            {ratingOptions.map(option => {
 	            	return <MenuItem key={option} value={option}>
 	            			<em>{option}</em>
@@ -84,9 +81,6 @@ class UserRatingsField extends React.Component {
 	            onChange={handleChange}
 	            inputProps={{ name: 'maxRating'}}
 	          >
-	            <MenuItem value="">
-	              <em>None</em>
-	            </MenuItem>
 	            {ratingOptions.map(option => {
 	            	return <MenuItem key={option} value={option}>
 	            			<em>{option}</em>
