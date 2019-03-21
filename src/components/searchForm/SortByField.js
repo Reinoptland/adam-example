@@ -66,9 +66,6 @@ class SortByField extends React.Component {
 	            onChange={handleChange}
 	            inputProps={{ name: 'sortBy'}}
 	          >
-	            <MenuItem value="">
-	              <em>None</em>
-	            </MenuItem>
 	            {sortValues.map(option => {
 	            	return <MenuItem key={option} value={option}>
 	            			<em>{option}</em>
