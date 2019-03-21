@@ -24,6 +24,8 @@ const styles = theme => ({
   }
 });
 
+const ApiKey = process.env.REACT_APP_API_KEY;
+
 class GenresField extends React.Component {
 
 	state = {
@@ -33,7 +35,7 @@ class GenresField extends React.Component {
 
   	componentDidMount() {
 		// Fetch genres from theMovieDb:
-			axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=36a5d44b2c49ac8525928003d3750b0c&language=en-US')
+			axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${ApiKey}&language=en-US`)
 			.then((response) => this.setState({genres : response.data.genres}));
 	}
 

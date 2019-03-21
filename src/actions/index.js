@@ -7,7 +7,8 @@ export const collectSearchValues = values => ({
 
 export const fetchMovies = () => {
 
-	const Url = `https://api.themoviedb.org/3/discover/movie?api_key=36a5d44b2c49ac8525928003d3750b0c&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
+	const ApiKey = process.env.REACT_APP_API_KEY;
+	const Url = `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
 	
 	return async (dispatch) => {
 		const response = await axios.get(Url);
