@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { fetchGenres, fetchMovies } from '../../actions';
+import { fetchMovies } from '../../actions';
 
 import GenresField from './GenresField';
 import UserRatingsField from './UserRatingsField';
@@ -33,9 +33,14 @@ class MainForm extends React.Component {
 		//Collect genresArray inside state:
 		axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${ApiKey}&language=en-US`)
 			.then((response) => this.setState({genresArray : response.data.genres}));
+	}
 
-		//Collect genresArray inside (Redux)store:
-		this.props.fetchGenres();
+	componentWillMount() {
+		console.log(this.props)
+	}
+
+	componentWillUpdate() {
+		console.log(this.props)
 	}
 
 	nextStep = () => {
@@ -153,8 +158,5 @@ class MainForm extends React.Component {
 	}
 }
 
-const mapStateToProps = state => {
-		return {genres : state.genresArray};
-	};
 
-export default connect(mapStateToProps, { fetchGenres, fetchMovies })(MainForm);
+export default connect(null, { fetchMovies })(MainForm);

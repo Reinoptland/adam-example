@@ -1,16 +1,5 @@
 import axios from 'axios';
 
-export const fetchGenres = () => {
-
-	const ApiKey = process.env.REACT_APP_API_KEY;
-	const Url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${ApiKey}&language=en-US`;
-	
-	return async (dispatch) => {
-		const response = await axios.get(Url);
-		dispatch({type : 'FETCH_GENRES', payload: response.data.genres});
-	}
-};
-
 export const fetchMovies = (selectedGenres, minRating, maxRating, minYear, maxYear, sortById) => {
 
 	const ApiKey = process.env.REACT_APP_API_KEY;
