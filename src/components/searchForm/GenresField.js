@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -24,20 +23,11 @@ const styles = theme => ({
   }
 });
 
-const ApiKey = process.env.REACT_APP_API_KEY;
-
 class GenresField extends React.Component {
 
 	state = {
-    genres : [],
     errorText : ''
   	};
-
-  	componentDidMount() {
-		// Fetch genres from theMovieDb:
-			axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${ApiKey}&language=en-US`)
-			.then((response) => this.setState({genres : response.data.genres}));
-	}
 
 	componentDidUpdate(prevProps, prevState) {
 		// If checkbox is clicked, remove errorText if needed:
@@ -75,7 +65,7 @@ class GenresField extends React.Component {
   	render() {
     
     const { classes, values, handleGenreSelection } = this.props;
-    const { genres } = this.state;
+    const genres = this.props.genresArray;
 
     return (
     	<React.Fragment>
