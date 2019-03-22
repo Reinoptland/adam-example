@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { fetchGenres, collectSearchValues, fetchMovies } from '../../actions';
+import { fetchGenres, fetchMovies } from '../../actions';
 
 import GenresField from './GenresField';
 import UserRatingsField from './UserRatingsField';
@@ -157,4 +157,4 @@ const mapStateToProps = state => {
 		return {genres : state.genresArray};
 	};
 
-export default connect(mapStateToProps, { fetchGenres, collectSearchValues, fetchMovies })(MainForm);
+export default connect(mapStateToProps, { fetchGenres, fetchMovies })(MainForm);

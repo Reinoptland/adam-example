@@ -1,10 +1,5 @@
 import axios from 'axios';
 
-export const collectSearchValues = values => ({
-	type: 'COLLECT_SEARCH_VALUES',
-	values
-});
-
 export const fetchGenres = () => {
 
 	const ApiKey = process.env.REACT_APP_API_KEY;
