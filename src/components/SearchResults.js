@@ -56,17 +56,14 @@ class SearchResults extends Component {
 
 	componentDidMount() {
 
+		const ApiKey = process.env.REACT_APP_API_KEY;
+
 		//Fetch Configuration Details:
-		axios.get('https://api.themoviedb.org/3/configuration?api_key=***REMOVED***&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1')
+		axios.get(`https://api.themoviedb.org/3/configuration?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
 			.then((response) => this.setState({configuration : response.data, isLoading : false}));
 
-			console.log('configuration:',this.state.configuration)
-		// //Fetch Movies:
-		// axios.get('https://api.themoviedb.org/3/discover/movie?api_key=***REMOVED***&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1')
-		// 	.then((response) => this.setState({movies : response.data.results}));
-
 		//Collect genresArray inside state:
-		axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=***REMOVED***&language=en-US`)
+		axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${ApiKey}&language=en-US`)
 			.then((response) => this.setState({genresArray : response.data.genres}));
 	}
 
