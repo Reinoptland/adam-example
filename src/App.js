@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import MainForm from './components/searchForm/MainForm';
-import SearchResults from './components/SearchResults';
+import Home from './components/Home';
 
 class App extends Component {
 
@@ -20,10 +19,7 @@ class App extends Component {
 
 	render() {
 	    return (
-	    	<div style={{width: '50%', margin: '0 auto'}}>
-	        {this.state.showMainForm ? <MainForm /> : null}
-	        {this.state.showSearchResults ? <SearchResults /> : null}
-	        </div>
+	    	<Home />
 	    );
   	}
 }
