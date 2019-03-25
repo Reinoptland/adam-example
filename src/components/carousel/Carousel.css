@@ -11,12 +11,12 @@
   .swiper-container {
     font-family: $secondary-font;
     height: 250px;
-    width: 80%;
+    width: 100%;
 
 }
 
 .swiper-container__title{
-      color: inherit;
+      color: #002984;
       font-family: inherit;
       font-size: 1.2rem;
       font-weight: bold;

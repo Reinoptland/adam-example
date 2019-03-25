@@ -43,5 +43,15 @@ export const styles = theme => ({
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing.unit * 6,
+  },
+  mainContainer: {
+    [theme.breakpoints.up('sm')]: {
+      padding: '2rem'
+    },
+    [theme.breakpoints.up('md')]: {
+      padding: '2rem 4 rem',
+      margin: '0 auto',
+      maxWidth: '80%'
+    }
   }
 });

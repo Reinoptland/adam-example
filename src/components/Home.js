@@ -101,7 +101,7 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
-          <div>
+          <div className={classes.mainContainer}>
             {/* End hero unit */}
             {!showCarousel ? <h1>Loading...</h1> :
               <React.Fragment>
