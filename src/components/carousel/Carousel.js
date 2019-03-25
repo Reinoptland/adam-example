@@ -11,7 +11,7 @@ const Carousel = (props) => {
   const params = {
       slidesPerView: 7,
       spaceBetween: 14,
-      loop: true,
+      loop: false,
       breakpoints: {
         1024: {
           slidesPerView: 5
