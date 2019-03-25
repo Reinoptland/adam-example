@@ -46,8 +46,8 @@ const Carousel = (props) => {
   	<div className="carousel-container wow fadeIn" data-wow-duration="3s">
   	<h2 className="swiper-container__title">Popular</h2>
     <Swiper {...params}>
-      {divs.map(div => (
-      	<div key={div} className="movie-card">
+      {props.popularMovies.map(movie => (
+      	<div key={movie.id} className="movie-card">
 	      	<img alt="movie" className="swiper-slide__image" src="https://image.tmdb.org/t/p/w154/xvx4Yhf0DVH8G4LzNISpMfFBDy2.jpg" />
 	      	<h3 className="swiper-slide__title">Movie Title</h3>
 	      	<p className="swiper-slide-rating">

@@ -21,7 +21,7 @@ class Home extends React.Component {
   constructor() {
     super();
     this.state = {
-
+      showCarousel : false
     }
   }
 
@@ -31,11 +31,20 @@ class Home extends React.Component {
 
   }
 
+  componentDidUpdate(prevProps, prevState){
+    // If searchForm has been completed show the SearchResults:
+    if(prevProps.popularMovies !== this.props.popularMovies) {
+      this.setState({showCarousel : true});
+    }
+  }
+
   fetchMovies = () => {
     this.props.fetchPopularMovies();
   }
 
   render() {
+
+  const { showCarousel } = this.state;
   const { classes } = this.props;
 
   return (
@@ -79,9 +88,13 @@ class Home extends React.Component {
           </div>
           <div>
             {/* End hero unit */}
-            <Carousel popularMovies={this.props.popularMovies} />
-            <Carousel />
-            <Carousel />
+            {!showCarousel ? <h1>Loading...</h1> :
+              <React.Fragment>
+              <Carousel popularMovies={this.props.popularMovies} />
+              <Carousel popularMovies={this.props.popularMovies} />
+              <Carousel popularMovies={this.props.popularMovies} />
+              </React.Fragment>
+            }
           </div>
         </main>
         {/* Footer */}
