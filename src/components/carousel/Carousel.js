@@ -7,6 +7,7 @@ import './Carousel.css';
 
 
 const Carousel = (props) => {
+
   const params = {
       slidesPerView: 7,
       spaceBetween: 14,
@@ -39,13 +40,15 @@ const Carousel = (props) => {
       renderNextButton: () => <div className="swiper-button-next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z" /></svg></div>
     };
 
+    const { movies, config } = props;
+
   return(
   	<div className="carousel-container wow fadeIn" data-wow-duration="3s">
   	<h2 className="swiper-container__title">Popular</h2>
     <Swiper {...params}>
-      {props.popularMovies.map(movie => (
+      {movies.map(movie => (
       	<div key={movie.id} className="movie-card">
-	      	<img alt="movie" className="swiper-slide__image" src="https://image.tmdb.org/t/p/w154/xvx4Yhf0DVH8G4LzNISpMfFBDy2.jpg" />
+	      	<img className="swiper-slide__image" src={`${config.images ? config.images.secure_base_url : ''}${config.images ? config.images.poster_sizes[1] : ''}${movie.poster_path}`} alt={movie.title} />
 	      	<h3 className="swiper-slide__title">{movie.title}</h3>
 	      	<p className="swiper-slide-rating">
 	        <svg className="swiper-slide-rating__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
