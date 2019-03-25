@@ -30,8 +30,8 @@ class Home extends React.Component {
 
   }
 
-  componentDidUpdate(prevProps, prevState){
-    // If searchForm has been completed show the SearchResults:
+  componentDidUpdate(prevProps){
+    // If fetch has been completed show the data:
     if(prevProps.popularMovies !== this.props.popularMovies) {
       this.setState({showCarousel : true});
     }
