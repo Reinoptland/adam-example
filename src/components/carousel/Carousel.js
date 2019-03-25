@@ -7,7 +7,6 @@ import './Carousel.css';
 
 
 const Carousel = (props) => {
-  console.log(props);
   const params = {
       slidesPerView: 7,
       spaceBetween: 14,
@@ -39,8 +38,6 @@ const Carousel = (props) => {
       renderPrevButton: () => <div className="swiper-button-prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z" /></svg></div>,
       renderNextButton: () => <div className="swiper-button-next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z" /></svg></div>
     };
-
-    const divs = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
 
   return(
   	<div className="carousel-container wow fadeIn" data-wow-duration="3s">

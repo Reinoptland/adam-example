@@ -1,5 +1,17 @@
 import axios from 'axios';
 
+export const fetchConfiguration = () => {
+
+	const ApiKey = process.env.REACT_APP_API_KEY;
+
+	const Url = `https://api.themoviedb.org/3/configuration?api_key=${ApiKey}`;
+
+	return async (dispatch) => {
+		const response = await axios.get(Url);
+		dispatch({type : 'FETCH_CONFIGURATION', payload : response.data})
+	}
+}
+
 export const fetchMovies = (selectedGenres, minRating, maxRating, minYear, maxYear, sortById) => {
 
 	const ApiKey = process.env.REACT_APP_API_KEY;
@@ -13,7 +25,7 @@ export const fetchMovies = (selectedGenres, minRating, maxRating, minYear, maxYe
 	
 	return async (dispatch) => {
 		const response = await axios.get(Url);
-		dispatch({type : 'FETCH_MOVIES', payload: response.data.results});
+		dispatch({type : 'FETCH_MOVIES', payload : response.data.results});
 
 	}
 };

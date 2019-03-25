@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { fetchConfiguration } from './actions';
+
 import Home from './components/Home';
 
 
@@ -9,6 +11,11 @@ class App extends Component {
 	state = {
 		showSearchResults : false,
 		showMainForm : true
+	}
+
+	componentDidMount() {
+		//Fetch MovieDB Configuration:
+		this.props.fetchConfiguration();
 	}
 
 	componentDidUpdate(prevProps, prevState){
@@ -32,8 +39,13 @@ class App extends Component {
   	}
 }
 
-const mapStateToProps = state => {
-		return {searchResults : state.searchResults};
-	}
+const mapStateToProps = state => ({
+	configuration : state.configuration,
+	searchResults : state.searchResults
+});
 
-export default connect(mapStateToProps,)(App);
+const mapDispatchToProps = dispatch => ({
+  fetchConfiguration: url => dispatch(fetchConfiguration())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

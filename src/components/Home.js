@@ -26,7 +26,6 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-
     this.fetchMovies();
 
   }
@@ -112,9 +111,10 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-    return {popularMovies : state.popularMovies};
-};
+const mapStateToProps = state => ({
+  configuration : state.configuration,
+  popularMovies : state.popularMovies
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchPopularMovies: url => dispatch(fetchPopularMovies())
