@@ -40,11 +40,11 @@ const Carousel = (props) => {
       renderNextButton: () => <div className="swiper-button-next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z" /></svg></div>
     };
 
-    const { movies, config } = props;
+    const { title, movies, config } = props;
 
   return(
   	<div className="carousel-container wow fadeIn" data-wow-duration="3s">
-  	<h2 className="swiper-container__title">Popular</h2>
+  	<h2 className="swiper-container__title">{title}</h2>
     <Swiper {...params}>
       {movies.map(movie => (
       	<div key={movie.id} className="movie-card">

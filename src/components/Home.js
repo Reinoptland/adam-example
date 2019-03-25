@@ -105,9 +105,9 @@ class Home extends React.Component {
             {/* End hero unit */}
             {!showCarousel ? <h1>Loading...</h1> :
               <React.Fragment>
-              <Carousel config={configuration} movies={popularMovies} />
-              <Carousel config={configuration} movies={topRatedMovies} />
-              <Carousel config={configuration} movies={upcomingMovies} />
+              <Carousel title="Popular" config={configuration} movies={popularMovies} />
+              <Carousel title="Top Rated" config={configuration} movies={topRatedMovies} />
+              <Carousel title="Upcoming" config={configuration} movies={upcomingMovies} />
               </React.Fragment>
             }
           </div>
