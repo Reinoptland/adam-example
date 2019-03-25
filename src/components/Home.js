@@ -2,7 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { fetchPopularMovies, fetchTopRatedMovies } from '../actions';
+import { 
+  fetchPopularMovies,
+  fetchTopRatedMovies,
+  fetchUpcomingMovies
+  } from '../actions';
 
 import { styles } from './styles';
 import Carousel from './carousel/Carousel';
@@ -33,7 +37,7 @@ class Home extends React.Component {
 
   componentDidUpdate(prevProps){
     // If all fetch has been completed show the data (count according to number of fetches):
-    if(this.state.count === 2) {
+    if(this.state.count === 3) {
       this.setState({showCarousel : true, count : 0});
     }
     if(prevProps.popularMovies !== this.props.popularMovies) {
@@ -42,17 +46,21 @@ class Home extends React.Component {
     if(prevProps.topRatedMovies !== this.props.topRatedMovies) {
       this.setState({count : this.state.count + 1});
     }
+    if(prevProps.upcomingMovies !== this.props.upcomingMovies) {
+      this.setState({count : this.state.count + 1});
+    }
   }
 
   fetchMovies = () => {
     this.props.fetchPopularMovies();
     this.props.fetchTopRatedMovies();
+    this.props.fetchUpcomingMovies();
   }
 
   render() {
 
   const { showCarousel } = this.state;
-  const { classes, configuration, popularMovies, topRatedMovies } = this.props;
+  const { classes, configuration, popularMovies, topRatedMovies, upcomingMovies } = this.props;
 
   return (
       <React.Fragment>
@@ -99,6 +107,7 @@ class Home extends React.Component {
               <React.Fragment>
               <Carousel config={configuration} movies={popularMovies} />
               <Carousel config={configuration} movies={topRatedMovies} />
+              <Carousel config={configuration} movies={upcomingMovies} />
               </React.Fragment>
             }
           </div>
@@ -121,12 +130,14 @@ class Home extends React.Component {
 const mapStateToProps = state => ({
   configuration : state.configuration,
   popularMovies : state.popularMovies,
-  topRatedMovies : state.topRatedMovies
+  topRatedMovies : state.topRatedMovies,
+  upcomingMovies : state.upcomingMovies
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchPopularMovies: url => dispatch(fetchPopularMovies()),
-  fetchTopRatedMovies: url => dispatch(fetchTopRatedMovies())
+  fetchTopRatedMovies: url => dispatch(fetchTopRatedMovies()),
+  fetchUpcomingMovies: url => dispatch(fetchUpcomingMovies())
 });
 
 Home.propTypes = {

@@ -59,3 +59,18 @@ export const fetchTopRatedMovies = () => {
 	}
 	
 };
+
+export const fetchUpcomingMovies = () => {
+
+	const ApiKey = process.env.REACT_APP_API_KEY;
+
+	const Url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${ApiKey}&language=en-US&page=1`;
+	
+	return (dispatch) => {
+		axios.get(Url)
+			.then( response => {
+				return dispatch({type : 'FETCH_UPCOMING_MOVIES', payload: response.data.results});
+			})
+	}
+	
+};
