@@ -7,6 +7,7 @@ import './Carousel.css';
 
 
 const Carousel = (props) => {
+  console.log(props);
   const params = {
       slidesPerView: 7,
       spaceBetween: 14,

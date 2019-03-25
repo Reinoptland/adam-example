@@ -103,8 +103,12 @@ const mapStateToProps = state => {
     return {popularMovies : state.popularMovies};
 };
 
+const mapDispatchToProps = dispatch => ({
+  fetchPopularMovies: url => dispatch(fetchPopularMovies())
+});
+
 Home.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, { fetchPopularMovies })(withStyles(styles)(Home));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Home));

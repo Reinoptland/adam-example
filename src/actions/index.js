@@ -30,4 +30,5 @@ export const fetchPopularMovies = () => {
 				return dispatch({type : 'FETCH_POPULAR_MOVIES', payload: response.data.results});
 			})
 	}
+	
 };
