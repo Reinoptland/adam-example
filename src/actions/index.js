@@ -44,3 +44,18 @@ export const fetchPopularMovies = () => {
 	}
 	
 };
+
+export const fetchTopRatedMovies = () => {
+
+	const ApiKey = process.env.REACT_APP_API_KEY;
+
+	const Url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${ApiKey}&language=en-US&page=1`;
+	
+	return (dispatch) => {
+		axios.get(Url)
+			.then( response => {
+				return dispatch({type : 'FETCH_TOP_RATED_MOVIES', payload: response.data.results});
+			})
+	}
+	
+};

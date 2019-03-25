@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { fetchPopularMovies } from '../actions';
+import { fetchPopularMovies, fetchTopRatedMovies } from '../actions';
 
 import { styles } from './styles';
 import Carousel from './carousel/Carousel';
@@ -21,30 +21,38 @@ class Home extends React.Component {
   constructor() {
     super();
     this.state = {
-      showCarousel : false
+      showCarousel : false,
+      count : 0
     }
   }
 
   componentDidMount() {
+    // Fetch movies for the movie carousel:
     this.fetchMovies();
-
   }
 
   componentDidUpdate(prevProps){
-    // If fetch has been completed show the data:
+    // If all fetch has been completed show the data (count according to number of fetches):
+    if(this.state.count === 2) {
+      this.setState({showCarousel : true, count : 0});
+    }
     if(prevProps.popularMovies !== this.props.popularMovies) {
-      this.setState({showCarousel : true});
+      this.setState({count : this.state.count + 1});
+    }
+    if(prevProps.topRatedMovies !== this.props.topRatedMovies) {
+      this.setState({count : this.state.count + 1});
     }
   }
 
   fetchMovies = () => {
     this.props.fetchPopularMovies();
+    this.props.fetchTopRatedMovies();
   }
 
   render() {
 
   const { showCarousel } = this.state;
-  const { classes } = this.props;
+  const { classes, configuration, popularMovies, topRatedMovies } = this.props;
 
   return (
       <React.Fragment>
@@ -89,9 +97,8 @@ class Home extends React.Component {
             {/* End hero unit */}
             {!showCarousel ? <h1>Loading...</h1> :
               <React.Fragment>
-              <Carousel config={this.props.configuration} movies={this.props.popularMovies} />
-              <Carousel config={this.props.configuration} movies={this.props.popularMovies} />
-              <Carousel config={this.props.configuration} movies={this.props.popularMovies} />
+              <Carousel config={configuration} movies={popularMovies} />
+              <Carousel config={configuration} movies={topRatedMovies} />
               </React.Fragment>
             }
           </div>
@@ -113,11 +120,13 @@ class Home extends React.Component {
 
 const mapStateToProps = state => ({
   configuration : state.configuration,
-  popularMovies : state.popularMovies
+  popularMovies : state.popularMovies,
+  topRatedMovies : state.topRatedMovies
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchPopularMovies: url => dispatch(fetchPopularMovies())
+  fetchPopularMovies: url => dispatch(fetchPopularMovies()),
+  fetchTopRatedMovies: url => dispatch(fetchTopRatedMovies())
 });
 
 Home.propTypes = {
