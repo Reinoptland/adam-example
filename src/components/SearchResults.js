@@ -54,7 +54,6 @@ class SearchResults extends Component {
 	}
 
 	componentDidMount() {
-
 		const ApiKey = process.env.REACT_APP_API_KEY;
 
 		//Fetch Configuration Details:
@@ -64,10 +63,6 @@ class SearchResults extends Component {
 		//Collect genresArray inside state:
 		axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${ApiKey}&language=en-US`)
 			.then((response) => this.setState({genresArray : response.data.genres}));
-	}
-
-	componentDidUpdate() {
-		console.log('configuration:',this.state.configuration)
 	}
 
 	displayGenres(ids) {
