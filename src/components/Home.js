@@ -10,6 +10,7 @@ import {
 
 import { styles } from './styles';
 import Header from './header/Header';
+import Footer from './footer/Footer';
 import Carousel from './carousel/Carousel';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -78,16 +79,7 @@ class Home extends React.Component {
             }
           </div>
         </main>
-        {/* Footer */}
-        <footer className={classes.footer}>
-          <Typography variant="h6" align="center" gutterBottom>
-            Footer
-          </Typography>
-          <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-            Something here to give the footer a purpose!
-          </Typography>
-        </footer>
-        {/* End footer */}
+        <Footer />
       </React.Fragment>
     );
   }
