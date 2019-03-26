@@ -46,7 +46,7 @@ class Confirmation extends React.Component {
 		const { classes, searchMovies } = this.props;
 		const { values : { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy } } = this.props;
 		return (
-			<Paper className={classes.root} elevation={1}>
+			<Paper className={classes.root} elevation={3}>
 			<div className={classes.container}>
 				<List component="nav" className={classes.list}>
 					<ListItem button>

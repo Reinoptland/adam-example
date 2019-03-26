@@ -55,7 +55,7 @@ class ReleaseYearField extends React.Component {
 		const { classes, values, handleReleaseYear } = this.props;
 
 		return (
-				<Paper className={classes.root} elevation={1}>
+				<Paper className={classes.root} elevation={3}>
 				  <form className={classes.container} noValidate autoComplete="off">
 				  	<TextField
 			          id="minimum-year"

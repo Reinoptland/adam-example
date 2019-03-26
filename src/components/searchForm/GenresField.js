@@ -81,7 +81,7 @@ class GenresField extends React.Component {
 
     return (
     	<div>
-	    	<Paper className={classes.root} elevation={1}>
+	    	<Paper className={classes.root} elevation={3}>
 		        <FormControl className={classes.formControl} required={true}>
 		          <FormGroup className={classes.formGroup}>
 		          	{genres.map(genre => {

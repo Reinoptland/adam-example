@@ -62,7 +62,7 @@ class SortByField extends React.Component {
 		const { sortValues } = this.state;
 
 		return (
-			<Paper className={classes.root} elevation={1}>
+			<Paper className={classes.root} elevation={3}>
 	    	<form className={classes.container}>
 	        <FormControl className={classes.formControl}>
 	          <InputLabel htmlFor="sort-value">Sort By</InputLabel>
