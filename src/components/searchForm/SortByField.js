@@ -4,18 +4,25 @@ import Header from './Header';
 import Footer from './Footer';
 
 import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 const styles = theme => ({
-  root: {
+  container: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     height: 200
   },
+  root: {
+    ...theme.mixins.gutters(),
+	    margin: '20px 20%',
+	    paddingTop: theme.spacing.unit * 2,
+	    paddingBottom: theme.spacing.unit * 2
+  	},
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 140,
@@ -56,9 +63,8 @@ class SortByField extends React.Component {
 		const { sortValues } = this.state;
 
 		return (
-			<React.Fragment>
-	    	<Header title={'Select Sort Value'} />
-	    	<form className={classes.root}>
+			<Paper className={classes.root} elevation={1}>
+	    	<form className={classes.container}>
 	        <FormControl className={classes.formControl}>
 	          <InputLabel htmlFor="sort-value">Sort By</InputLabel>
 	          <Select
@@ -78,7 +84,7 @@ class SortByField extends React.Component {
 	          	back={this.back}
 	          	forward={this.continue}
 	          	/>
-        	</React.Fragment>
+        	</Paper>
 			)
 	}
 }
