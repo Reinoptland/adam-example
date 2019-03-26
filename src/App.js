@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { fetchConfiguration } from './actions';
 
 import Home from './components/Home';
-
+import MainForm from './components/searchForm/MainForm';
+import PageNotFound from './components/pageNotFound';
 
 class App extends Component {
 
@@ -34,7 +36,14 @@ class App extends Component {
 
 	render() {
 	    return (
-	    	<Home />
+	    	<React.Fragment>
+			<Switch>
+				<Route exact path='/' component={Home} />
+				<Route path='/search' component={MainForm} />
+				<Route path='/movie/:id' component={null} />
+				<Route component={PageNotFound} />
+			</Switch>
+			</React.Fragment>
 	    );
   	}
 }
