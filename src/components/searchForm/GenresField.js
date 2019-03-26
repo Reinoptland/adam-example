@@ -10,7 +10,6 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
-import Fade from '@material-ui/core/Fade';
 
 // Define CSS styles:
 const styles = theme => ({
@@ -36,7 +35,6 @@ const styles = theme => ({
 class GenresField extends React.Component {
 
 	state = {
-		isError : false,
     errorText : ''
   	};
 
@@ -77,7 +75,6 @@ class GenresField extends React.Component {
     
     const { classes, values, handleGenreSelection } = this.props;
     const genres = this.props.genresArray;
-    const { isError } = this.state;
 
     return (
     	<div>
