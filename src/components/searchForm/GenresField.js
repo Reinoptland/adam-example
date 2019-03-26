@@ -18,9 +18,12 @@ const styles = theme => ({
 	    margin: '20px 20%',
 	    paddingTop: theme.spacing.unit * 2,
 	    paddingBottom: theme.spacing.unit * 2,
+	    display: 'flex',
+	    flexDirection: 'column',
+	    justifyContent: 'space-between',
+	    height: 350
   	},
   	formControl: {
-	    margin: theme.spacing.unit * 3,
 	    width: '100%'
   	},
   	formGroup: {
@@ -92,15 +95,12 @@ class GenresField extends React.Component {
 		          				key={genre.id}
 		          				label={genre.name} />
 		          	})}
-		          </FormGroup>
-		          <Footer
-		          	noBack={true}
-		          	forward={this.continue}
-		          	/>
+		          </FormGroup> 
 		        </FormControl>
 		        <Typography className={classes.errorText} variant="body1" color="error" align="center" gutterBottom>
 		          {this.state.errorText}
 		         </Typography>
+		        <Footer noBack={true} forward={this.continue} />
 	        </Paper>
         </div>
     );

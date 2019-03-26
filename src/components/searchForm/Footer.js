@@ -3,7 +3,8 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 
 const Footer = ({ noBack, back, forward }) => (
-			<div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+			<div style={noBack ? {display: 'flex', justifyContent: 'flex-end'} :
+						{display: 'flex', justifyContent: 'space-around'}}>
 		     		<Button
 		     			style={noBack ? {display: 'none'} : {}}
 				    	variant="outlined"

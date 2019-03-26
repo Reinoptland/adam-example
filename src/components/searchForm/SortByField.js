@@ -20,7 +20,8 @@ const styles = theme => ({
     ...theme.mixins.gutters(),
 	    margin: '20px 20%',
 	    paddingTop: theme.spacing.unit * 2,
-	    paddingBottom: theme.spacing.unit * 2
+	    paddingBottom: theme.spacing.unit * 2,
+	    height: 350
   	},
   formControl: {
     margin: theme.spacing.unit,

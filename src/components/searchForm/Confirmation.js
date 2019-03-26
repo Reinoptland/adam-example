@@ -21,6 +21,7 @@ const styles = theme => ({
 	    margin: '20px 20%',
 	    paddingTop: theme.spacing.unit * 2,
 	    paddingBottom: theme.spacing.unit * 2,
+	    height: 350
   	},
   footer: {
   	display: 'flex',
@@ -43,7 +44,7 @@ class Confirmation extends React.Component {
 
 	render() {
 
-		const { classes, searchMovies } = this.props;
+		const { classes, searchMovies, searchCompleted } = this.props;
 		const { values : { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy } } = this.props;
 		return (
 			<Paper className={classes.root} elevation={3}>
@@ -71,6 +72,7 @@ class Confirmation extends React.Component {
 							secondary={sortBy} />
 					</ListItem>
 				</List>
+				{}
 				<div className={classes.footer}>
 	        	<Button
 		          	variant="outlined"
