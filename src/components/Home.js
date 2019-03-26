@@ -9,6 +9,7 @@ import {
   } from '../actions';
 
 import { styles } from './styles';
+import Header from './header/Header';
 import Carousel from './carousel/Carousel';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -64,43 +65,8 @@ class Home extends React.Component {
 
   return (
       <React.Fragment>
-        <CssBaseline />
-        <AppBar position="static" className={classes.appBar}>
-          <Toolbar>
-            <LocalMovies className={classes.icon} />
-            <Typography variant="h6" color="inherit" noWrap>
-              Movie Selector
-            </Typography>
-          </Toolbar>
-        </AppBar>
+        <Header />
         <main>
-          {/* Hero unit */}
-          <div className={classes.heroUnit}>
-            <div className={classes.heroContent}>
-              <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                Movie Selector
-              </Typography>
-              <Typography variant="h6" align="center" color="textSecondary" paragraph>
-                Something short and leading about the collection below—its contents, the creator, etc.
-                Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-                entirely.
-              </Typography>
-              <div className={classes.heroButtons}>
-                <Grid container spacing={16} justify="center">
-                  <Grid item>
-                    <Button variant="contained" color="primary">
-                      Search for movies
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button variant="outlined" color="primary">
-                      Random Search
-                    </Button>
-                  </Grid>
-                </Grid>
-              </div>
-            </div>
-          </div>
           <div className={classes.mainContainer}>
             {/* End hero unit */}
             {!showCarousel ? <h1>Loading...</h1> :
