@@ -4,6 +4,7 @@ import Header from './Header';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -11,12 +12,18 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
-  root: {
+  container: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
+  root: {
+	    ...theme.mixins.gutters(),
+	    margin: '20px 20%',
+	    paddingTop: theme.spacing.unit * 2,
+	    paddingBottom: theme.spacing.unit * 2,
+  	},
   footer: {
   	display: 'flex',
   	width: '100%',
@@ -41,8 +48,8 @@ class Confirmation extends React.Component {
 		const { classes, searchMovies } = this.props;
 		const { values : { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy } } = this.props;
 		return (
-			<div className={classes.root}>
-				<Header title={'Confirmation'} />
+			<Paper className={classes.root} elevation={1}>
+			<div className={classes.container}>
 				<List component="nav" className={classes.list}>
 					<ListItem button>
 						<ListItemText
@@ -84,6 +91,7 @@ class Confirmation extends React.Component {
 		          	</Button>
 	          </div>
 			</div>
+			</Paper>
 			);
 	}
 }
