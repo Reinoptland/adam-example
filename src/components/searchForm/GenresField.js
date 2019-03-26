@@ -10,6 +10,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
+import Fade from '@material-ui/core/Fade';
 
 // Define CSS styles:
 const styles = theme => ({
@@ -25,12 +26,17 @@ const styles = theme => ({
   	},
   	formGroup: {
 	  	display: 'block'
+  	},
+  	errorText: {
+  		display: 'block',
+  		height: 20
   	}
 });
 
 class GenresField extends React.Component {
 
 	state = {
+		isError : false,
     errorText : ''
   	};
 
@@ -50,7 +56,7 @@ class GenresField extends React.Component {
 			errorText = 'You need to select at least one genre!';
 		}
 
-		this.setState({errorText});
+		this.setState({isError : true, errorText});
 
 		return isError;
 	}
@@ -71,6 +77,7 @@ class GenresField extends React.Component {
     
     const { classes, values, handleGenreSelection } = this.props;
     const genres = this.props.genresArray;
+    const { isError } = this.state;
 
     return (
     	<div>
@@ -89,14 +96,14 @@ class GenresField extends React.Component {
 		          				label={genre.name} />
 		          	})}
 		          </FormGroup>
-		          <Typography variant="body1" color="error" align="right" gutterBottom>
-		          {this.state.errorText}
-		          </Typography>
 		          <Footer
 		          	noBack={true}
 		          	forward={this.continue}
 		          	/>
 		        </FormControl>
+		        <Typography className={classes.errorText} variant="body1" color="error" align="center" gutterBottom>
+		          {this.state.errorText}
+		         </Typography>
 	        </Paper>
         </div>
     );
