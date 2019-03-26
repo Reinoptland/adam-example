@@ -5,32 +5,39 @@ import Header from './Header';
 import Footer from './Footer';
 
 import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper'
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 const styles = theme => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 200
-  },
-  footer: {
-  	display: 'flex',
-  	justifyContent: 'space-evenly'
-  },
-  formControl: {
-    margin: theme.spacing.unit,
-    minWidth: 140,
-  },
-  formGroup: {
-  	display: 'flex'
-  },
-  selectEmpty: {
-    marginTop: theme.spacing.unit * 2,
-  },
+	userRatingWrapper: {
+	    display: 'flex',
+	    justifyContent: 'center',
+	    alignItems: 'center',
+	    height: 200
+	},
+	root: {
+    ...theme.mixins.gutters(),
+	    margin: '20px 20%',
+	    paddingTop: theme.spacing.unit * 2,
+	    paddingBottom: theme.spacing.unit * 2
+  	},
+  	footer: {
+	  	display: 'flex',
+	  	justifyContent: 'space-evenly'
+  	},
+  	formControl: {
+	    margin: theme.spacing.unit,
+	    minWidth: 140
+  	},
+  	formGroup: {
+  		display: 'flex'
+  	},
+  	selectEmpty: {
+    	marginTop: theme.spacing.unit * 2
+  	}
 });
 
 class UserRatingsField extends React.Component {
@@ -57,9 +64,8 @@ class UserRatingsField extends React.Component {
 		const { ratingOptions } = this.state;
 
 		return (
-			<React.Fragment>
-	    	<Header title={'Select User Rating'} />
-	    	<form className={classes.root}>
+	    	<Paper className={classes.root} elevation={1}>
+	    	<div className={classes.userRatingWrapper}>
 	        <FormControl className={classes.formControl}>
 	          <InputLabel htmlFor="min-rating">Minimum Rating</InputLabel>
 	          <Select
@@ -88,12 +94,14 @@ class UserRatingsField extends React.Component {
 	            })}
 	          </Select>
 	         </FormControl>
-        	</form>
+	         </div>
         	<Footer
 	          	back={this.back}
 	          	forward={this.continue}
 	          	/>
-        	</React.Fragment>
+
+	        </Paper>
+        	
         );
 	}
 }
