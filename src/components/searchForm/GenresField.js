@@ -5,6 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -13,14 +14,19 @@ import Typography from '@material-ui/core/Typography';
 
 // Define CSS styles:
 const styles = theme => ({
-  formControl: {
-    margin: theme.spacing.unit * 3,
-    width: '100%'
-  },
-  formGroup: {
-  	display: 'flex',
-  	height: 200
-  }
+	root: {
+	    ...theme.mixins.gutters(),
+	    margin: '20px 20%',
+	    paddingTop: theme.spacing.unit * 2,
+	    paddingBottom: theme.spacing.unit * 2,
+  	},
+  	formControl: {
+	    margin: theme.spacing.unit * 3,
+	    width: '100%'
+  	},
+  	formGroup: {
+	  	display: 'block'
+  	}
 });
 
 class GenresField extends React.Component {
@@ -68,31 +74,32 @@ class GenresField extends React.Component {
     const genres = this.props.genresArray;
 
     return (
-    	<React.Fragment>
-	    	<Header title={'Select Genres'} />
-	        <FormControl className={classes.formControl} required={true}>
-	          <FormGroup className={classes.formGroup}>
-	          	{genres.map(genre => {
-	          		return <FormControlLabel
-	          				control={
-	          					<Checkbox
-	          						checked={values.selectedGenres.indexOf(genre.name) > -1}
-	          						onChange={handleGenreSelection}
-	          						value={genre.name} />
-	          				}
-	          				key={genre.id}
-	          				label={genre.name} />
-	          	})}
-	          </FormGroup>
-	          <Typography variant="body1" color="error" align="right" gutterBottom>
-	          {this.state.errorText}
-	          </Typography>
-	          <Footer
-	          	noBack={true}
-	          	forward={this.continue}
-	          	/>
-	        </FormControl>
-        </React.Fragment>
+    	<div>
+	    	<Paper className={classes.root} elevation={1}>
+		        <FormControl className={classes.formControl} required={true}>
+		          <FormGroup className={classes.formGroup}>
+		          	{genres.map(genre => {
+		          		return <FormControlLabel
+		          				control={
+		          					<Checkbox
+		          						checked={values.selectedGenres.indexOf(genre.name) > -1}
+		          						onChange={handleGenreSelection}
+		          						value={genre.name} />
+		          				}
+		          				key={genre.id}
+		          				label={genre.name} />
+		          	})}
+		          </FormGroup>
+		          <Typography variant="body1" color="error" align="right" gutterBottom>
+		          {this.state.errorText}
+		          </Typography>
+		          <Footer
+		          	noBack={true}
+		          	forward={this.continue}
+		          	/>
+		        </FormControl>
+	        </Paper>
+        </div>
     );
   }
 }
