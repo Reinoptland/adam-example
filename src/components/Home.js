@@ -12,14 +12,6 @@ import { styles } from './styles';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Carousel from './carousel/Carousel';
-
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
-import LocalMovies from '@material-ui/icons/LocalMovies';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 class Home extends React.Component {
