@@ -9,6 +9,7 @@ import UserRatingsField from './UserRatingsField';
 import ReleaseYearField from './ReleaseYearField';
 import SortByField from './SortByField';
 import Confirmation from './Confirmation';
+import SearchResults from '../SearchResults';
 
 class MainForm extends React.Component {
 
@@ -17,6 +18,7 @@ class MainForm extends React.Component {
 		this.state = {
 			step : 1,
 			showForm : true,
+			showSearchResults : false,
 			selectedGenres : [],
 			genresArray : [],
 			minRating : '1.0',
@@ -102,7 +104,7 @@ class MainForm extends React.Component {
 
 		this.props.fetchMovies(genres, values.minRating, values.maxRating, values.minYear, values.maxYear, sortById);
 
-		this.setState({showForm : false});
+		this.setState({showSearchResults : true});
 	}
 
 	componentWillUnmount() {
@@ -112,7 +114,7 @@ class MainForm extends React.Component {
 
 	render() {
 
-		const { step, showForm, genresArray, selectedGenres,
+		const { step, showForm, showSearchResults, genresArray, selectedGenres,
 				minRating, maxRating, minYear, maxYear, sortBy } = this.state;
 		const values = { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy };
 
@@ -165,6 +167,7 @@ class MainForm extends React.Component {
 			<React.Fragment>
 			<Header />
 			{formField}
+			{showSearchResults ? <SearchResults /> : null}
 			</React.Fragment>
 			);
 		
