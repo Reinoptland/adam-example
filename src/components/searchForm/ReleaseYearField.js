@@ -4,6 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 import PropTypes from 'prop-types';
+import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
@@ -14,6 +15,12 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  root: {
+    ...theme.mixins.gutters(),
+	    margin: '20px 20%',
+	    paddingTop: theme.spacing.unit * 2,
+	    paddingBottom: theme.spacing.unit * 2
+  	},
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -49,8 +56,7 @@ class ReleaseYearField extends React.Component {
 		const { classes, values, handleReleaseYear } = this.props;
 
 		return (
-			<React.Fragment>
-				<Header title={'Choose Release Year'} />
+				<Paper className={classes.root} elevation={1}>
 				  <form className={classes.container} noValidate autoComplete="off">
 				  	<TextField
 			          id="minimum-year"
@@ -91,8 +97,8 @@ class ReleaseYearField extends React.Component {
 		          	back={this.back}
 		          	forward={this.continue}
 	          		/>
-	         </React.Fragment>
-			);
+	         	</Paper>
+				);
 	}
 }
 
