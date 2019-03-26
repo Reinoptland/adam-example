@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { fetchMovies } from '../../actions';
 
+import Header from '../header/Header';
 import GenresField from './GenresField';
 import UserRatingsField from './UserRatingsField';
 import ReleaseYearField from './ReleaseYearField';
@@ -115,45 +116,57 @@ class MainForm extends React.Component {
 				minRating, maxRating, minYear, maxYear, sortBy } = this.state;
 		const values = { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy };
 
+		// Decide which form-field to show:
+		let formField;
 		if(showForm) {
 
 			switch(step) {
 			case 1:
-			return <GenresField
+			formField = <GenresField
 					handleGenreSelection={this.handleGenreSelection}
 					nextStep={this.nextStep}
 					genresArray={genresArray}
 					values={values} />
+					break;
 			case 2:
-			return <UserRatingsField
+			formField = <UserRatingsField
 					handleChange={this.handleChange}
 					nextStep={this.nextStep}
 					prevStep={this.prevStep}
 					values={values} />
+					break;
 			case 3:
-			return <ReleaseYearField
+			formField = <ReleaseYearField
 					handleReleaseYear={this.handleReleaseYear}
 					nextStep={this.nextStep}
 					prevStep={this.prevStep}
 					values={values} />
+					break;
 			case 4:
-			return <SortByField
+			formField = <SortByField
 					handleChange={this.handleChange}
 					nextStep={this.nextStep}
 					prevStep={this.prevStep}
 					values={values} />
+					break;
 			case 5:
-			return <Confirmation
+			formField = <Confirmation
 					nextStep={this.nextStep}
 					prevStep={this.prevStep}
 					searchMovies={this.searchMovies}
 					values={values} />
+					break;
 			default:
 			return null;
 			}
-		} else {
-			return null;
 		}
+
+		return (
+			<React.Fragment>
+			<Header />
+			{formField}
+			</React.Fragment>
+			);
 		
 	}
 }
