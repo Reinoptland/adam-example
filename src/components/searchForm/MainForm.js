@@ -112,7 +112,6 @@ class MainForm extends React.Component {
 		this.setState({
 			step : 1,
 			showForm : true,
-			showSearchResults : false,
 			searchCompleted : false,
 			selectedGenres : [],
 			minRating : '1.0',

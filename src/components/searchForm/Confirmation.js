@@ -70,7 +70,8 @@ class Confirmation extends React.Component {
 	    this.props.prevStep();
   	};
 
-  	handleButtonClick = () => {
+  	handleButtonClick = (e) => {
+  		this.props.searchMovies(e);
 	    if (!this.state.loading) {
 	      this.setState(
 	        {
@@ -83,7 +84,7 @@ class Confirmation extends React.Component {
 	              loading: false,
 	              success: true,
 	            });
-	          }, 2000);
+	          }, 1500);
 	        },
 	      );
 	    }
