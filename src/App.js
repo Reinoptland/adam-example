@@ -6,6 +6,7 @@ import { fetchConfiguration } from './actions';
 
 import Home from './components/Home';
 import MainForm from './components/searchForm/MainForm';
+import MovieDetailsContainer from './components/movieDetails/MovieDetailsContainer';
 import PageNotFound from './components/pageNotFound';
 
 class App extends Component {
@@ -40,7 +41,7 @@ class App extends Component {
 			<Switch>
 				<Route exact path='/' component={Home} />
 				<Route path='/search' component={MainForm} />
-				<Route path='/movie/:id' component={null} />
+				<Route path='/movie/:id' component={MovieDetailsContainer} />
 				<Route component={PageNotFound} />
 			</Switch>
 			</React.Fragment>
