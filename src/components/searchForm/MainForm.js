@@ -108,6 +108,21 @@ class MainForm extends React.Component {
 		this.setState({searchCompleted : true, showSearchResults : true});
 	}
 
+	resetSearchForm = () => {
+		this.setState({
+			step : 1,
+			showForm : true,
+			showSearchResults : false,
+			searchCompleted : false,
+			selectedGenres : [],
+			minRating : '1.0',
+			maxRating : '10',
+			minYear : '1874',
+			maxYear : '2019',
+			sortBy : 'Popularity Descending'
+		});
+	}
+
 	componentWillUnmount() {
 		console.log('form unmounted');
 	}
@@ -158,6 +173,7 @@ class MainForm extends React.Component {
 					prevStep={this.prevStep}
 					searchMovies={this.searchMovies}
 					values={values}
+					resetSearchForm={this.resetSearchForm}
 					searchCompleted={searchCompleted} />
 					break;
 			default:
