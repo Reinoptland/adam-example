@@ -92,7 +92,7 @@ class Confirmation extends React.Component {
 
 	render() {
 
-		const { classes, searchMovies, searchCompleted, resetSearchForm } = this.props;
+		const { classes, resetSearchForm } = this.props;
 		const { values : { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy } } = this.props;
 		const { loading, success } = this.state;
     	const buttonClassname = classNames({[classes.buttonSuccess]: success});

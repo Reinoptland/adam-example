@@ -47,7 +47,6 @@ const styles = theme => ({
 class SearchResults extends Component {
 
 	state = {
-		configuration : [],
 		movies : [],
 		genresArray : []
 	}
@@ -55,10 +54,7 @@ class SearchResults extends Component {
 	componentDidMount() {
 		const ApiKey = process.env.REACT_APP_API_KEY;
 
-		//Fetch Configuration Details:
-		axios.get(`https://api.themoviedb.org/3/configuration?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
-			.then((response) => this.setState({configuration : response.data}));
-
+		
 		//Collect genresArray inside state:
 		axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${ApiKey}&language=en-US`)
 			.then((response) => this.setState({genresArray : response.data.genres}));
@@ -75,8 +71,7 @@ class SearchResults extends Component {
 
 	render() {
 
-		const { classes, movies } = this.props;
-		const { configuration } = this.state;
+		const { classes, movies, configuration } = this.props;
 
 	    return (
 	    	<Grid container className={classes.root} spacing={16}>
@@ -124,7 +119,9 @@ class SearchResults extends Component {
 }
 
 const mapStateToProps = state => {
-		return {movies : state.searchResults,};
+		return {
+			configuration : state.configuration,
+			movies : state.searchResults,};
 	};
 
 SearchResults.propTypes = {

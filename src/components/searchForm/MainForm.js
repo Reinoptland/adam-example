@@ -19,7 +19,6 @@ class MainForm extends React.Component {
 			step : 1,
 			showForm : true,
 			showSearchResults : false,
-			searchCompleted : false,
 			selectedGenres : [],
 			genresArray : [],
 			minRating : '1.0',
@@ -105,14 +104,13 @@ class MainForm extends React.Component {
 
 		this.props.fetchMovies(genres, values.minRating, values.maxRating, values.minYear, values.maxYear, sortById);
 
-		this.setState({searchCompleted : true, showSearchResults : true});
+		this.setState({showSearchResults : true});
 	}
 
 	resetSearchForm = () => {
 		this.setState({
 			step : 1,
 			showForm : true,
-			searchCompleted : false,
 			selectedGenres : [],
 			minRating : '1.0',
 			maxRating : '10',
@@ -129,7 +127,7 @@ class MainForm extends React.Component {
 
 	render() {
 
-		const { step, showForm, showSearchResults, searchCompleted, genresArray, selectedGenres,
+		const { step, showForm, showSearchResults, genresArray, selectedGenres,
 				minRating, maxRating, minYear, maxYear, sortBy } = this.state;
 		const values = { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy };
 
@@ -172,8 +170,7 @@ class MainForm extends React.Component {
 					prevStep={this.prevStep}
 					searchMovies={this.searchMovies}
 					values={values}
-					resetSearchForm={this.resetSearchForm}
-					searchCompleted={searchCompleted} />
+					resetSearchForm={this.resetSearchForm} />
 					break;
 			default:
 			return null;
