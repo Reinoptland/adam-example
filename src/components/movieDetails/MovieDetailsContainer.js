@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { fetchMovieDetails } from '../../actions';
 
+import Header from '../header/Header';
 import MovieDetails from './MovieDetails';
 
 class MovieDetailsPageContainer extends React.Component {
@@ -35,7 +36,10 @@ class MovieDetailsPageContainer extends React.Component {
 		return (
 			<React.Fragment>
 			{!showDetails ? <div>loading...</div> :
-			<MovieDetails movieData={movieData} />
+			<React.Fragment>
+				<Header />
+				<MovieDetails movieData={movieData} />
+			</React.Fragment>
 			}
 			</React.Fragment>
 			);
