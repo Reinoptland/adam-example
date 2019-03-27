@@ -10,7 +10,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import LinearProgress from '@material-ui/core/LinearProgress';
 
 //CSS styles:
 const styles = theme => ({
@@ -83,7 +82,6 @@ class SearchResults extends Component {
 	    return (
 	    	<Grid container className={classes.root} spacing={16}>
         		<Grid item xs={12}>
-	          		{isLoading ? <LinearProgress /> :
 	          			<Grid container justify="center" spacing={16}>
 	            		{movies.map(movie => (
 	              			<Grid key={movie.id} item>
@@ -119,7 +117,7 @@ class SearchResults extends Component {
 							    </Card>
 	              			</Grid>
 	            		))}
-	          		</Grid>}
+	          		</Grid>
         		</Grid>
         	</Grid>
 	    );
