@@ -66,6 +66,7 @@ class UserRatingsField extends React.Component {
 
 		return (
 	    	<Paper className={classes.root} elevation={3}>
+	    	<h2>Choose User Rating</h2>
 	    	<div className={classes.userRatingWrapper}>
 	        <FormControl className={classes.formControl}>
 	          <InputLabel htmlFor="min-rating">Minimum Rating</InputLabel>
