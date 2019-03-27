@@ -17,8 +17,6 @@ class MovieDetailsPageContainer extends React.Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		console.log('didupdate:', this.state.showDetails);
-		console.log('props', this.props)
 		// Check if fetch movie details is complete, than render data:
 		if(prevProps.movieData !== this.props.movieData) {
 			this.setState({showDetails : true});
@@ -45,7 +43,6 @@ class MovieDetailsPageContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-	console.log(state)
 	return { movieData : state.movieDetails}
 }
 
