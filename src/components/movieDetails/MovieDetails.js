@@ -1,8 +1,8 @@
 import React from 'react';
 
-const MovieDetails = () => (
+const MovieDetails = ({ movieData }) => (
 	<div>
-	MovieDetails
+	<h3>{movieData.title}</h3>
 	</div>
 	);
 
