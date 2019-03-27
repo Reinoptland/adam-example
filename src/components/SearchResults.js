@@ -47,7 +47,6 @@ const styles = theme => ({
 class SearchResults extends Component {
 
 	state = {
-		isLoading : true,
 		configuration : [],
 		movies : [],
 		genresArray : []
@@ -58,7 +57,7 @@ class SearchResults extends Component {
 
 		//Fetch Configuration Details:
 		axios.get(`https://api.themoviedb.org/3/configuration?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
-			.then((response) => this.setState({configuration : response.data, isLoading : false}));
+			.then((response) => this.setState({configuration : response.data}));
 
 		//Collect genresArray inside state:
 		axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${ApiKey}&language=en-US`)
@@ -77,7 +76,7 @@ class SearchResults extends Component {
 	render() {
 
 		const { classes, movies } = this.props;
-		const { configuration, isLoading } = this.state;
+		const { configuration } = this.state;
 
 	    return (
 	    	<Grid container className={classes.root} spacing={16}>
