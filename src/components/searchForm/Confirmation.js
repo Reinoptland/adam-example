@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
@@ -8,6 +9,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import green from '@material-ui/core/colors/green';
+import CheckIcon from '@material-ui/icons/Check';
+
 
 const styles = theme => ({
   container: {
@@ -28,6 +33,24 @@ const styles = theme => ({
   	width: '100%',
   	justifyContent: 'space-evenly'
   },
+   wrapper: {
+    margin: theme.spacing.unit,
+    position: 'relative'
+  },
+  buttonSuccess: {
+    backgroundColor: green[500],
+    '&:hover': {
+      backgroundColor: green[700],
+    }
+  },
+  buttonProgress: {
+    color: green[500],
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12
+  },
   list: {
     width: '100%',
     maxWidth: 360,
@@ -37,15 +60,42 @@ const styles = theme => ({
 
 class Confirmation extends React.Component {
 
+	state = {
+		loading: false,
+		succes: false
+	}
+
   	back = e => {
 	    e.preventDefault();
 	    this.props.prevStep();
   	};
 
+  	handleButtonClick = () => {
+	    if (!this.state.loading) {
+	      this.setState(
+	        {
+	          success: false,
+	          loading: true,
+	        },
+	        () => {
+	          this.timer = setTimeout(() => {
+	            this.setState({
+	              loading: false,
+	              success: true,
+	            });
+	          }, 2000);
+	        },
+	      );
+	    }
+	};
+
 	render() {
 
-		const { classes, searchMovies, searchCompleted } = this.props;
+		const { classes, searchMovies, searchCompleted, resetSearchForm } = this.props;
 		const { values : { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy } } = this.props;
+		const { loading, success } = this.state;
+    	const buttonClassname = classNames({[classes.buttonSuccess]: success});
+
 		return (
 			<Paper className={classes.root} elevation={3}>
 			<div className={classes.container}>
@@ -74,21 +124,28 @@ class Confirmation extends React.Component {
 				</List>
 				{}
 				<div className={classes.footer}>
+				<div className={classes.wrapper}>
 	        	<Button
 		          	variant="outlined"
 		          	color="primary"
 		          	className={classes.button}
-		          	onClick={this.back}>
-		          	Back
+		          	onClick={!success ? this.back : resetSearchForm}>
+		          	{success ? 'New Search' : 'Back'}
 		          	</Button>
+		          	{loading && <CircularProgress size={24} className={classes.buttonProgress} />}
+		         </div>
+		          <div className={classes.wrapper}>
 		          <Button
 		          	variant="contained"
 		          	color="secondary"
 		          	size="large"
-		          	className={classes.button}
-		          	onClick={searchMovies}>
-		          	Search
+		          	className={buttonClassname}
+		          	disabled={loading}
+		          	onClick={!success ? this.handleButtonClick.bind(this) : null}>
+		          	{success ? <CheckIcon /> : 'Search'}
 		          	</Button>
+		          	{loading && <CircularProgress size={24} className={classes.buttonProgress} />}
+		          </div>
 	          </div>
 			</div>
 			</Paper>
