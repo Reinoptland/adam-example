@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -49,15 +48,6 @@ class SearchResults extends Component {
 	state = {
 		movies : [],
 		genresArray : []
-	}
-
-	componentDidMount() {
-		const ApiKey = process.env.REACT_APP_API_KEY;
-
-		
-		//Collect genresArray inside state:
-		axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${ApiKey}&language=en-US`)
-			.then((response) => this.setState({genresArray : response.data.genres}));
 	}
 
 	displayGenres(ids) {
@@ -121,6 +111,7 @@ class SearchResults extends Component {
 const mapStateToProps = state => {
 		return {
 			configuration : state.configuration,
+			genresArr : state.genresArray,
 			movies : state.searchResults,};
 	};
 
