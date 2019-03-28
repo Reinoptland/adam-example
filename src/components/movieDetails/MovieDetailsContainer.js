@@ -6,9 +6,35 @@ import { fetchMovieDetails } from '../../actions';
 import Header from '../header/Header';
 import MovieDetails from './MovieDetails';
 
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  appBar: {
+    position: 'relative',
+  },
+  icon: {
+    marginRight: theme.spacing.unit * 2,
+  },
+  heroUnit: {
+    backgroundColor: theme.palette.background.paper,
+    backgroundSize: 'cover !important',
+    height: 350
+  },
+  heroContent: {
+    maxWidth: 600,
+    margin: '0 auto',
+    padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
+  },
+  footer: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing.unit * 6,
+  },
+});
+
 class MovieDetailsPageContainer extends React.Component {
 
 	state = {
+		count : 0,
 		showDetails : false
 	}
 
@@ -18,9 +44,15 @@ class MovieDetailsPageContainer extends React.Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		// Check if fetch movie details is complete, than render data:
+		// If all fetch has been completed show the data (count according to number of fetches):
+		if(this.state.count === 2) {
+      		this.setState({showDetails : true, count : 0});
+    	}
 		if(prevProps.movieData !== this.props.movieData) {
-			this.setState({showDetails : true});
+			this.setState({count : this.state.count + 1});
+		}
+		if(prevProps.config !== this.props.config) {
+			this.setState({count : this.state.count + 1})
 		}
 	}
 
@@ -31,27 +63,28 @@ class MovieDetailsPageContainer extends React.Component {
 	render() {
 
 		const { showDetails } = this.state;
-		const { movieData } = this.props;
+		const { classes, movieData, config } = this.props;
 
 		return (
 			<React.Fragment>
-			{!showDetails ? <div>loading...</div> :
-			<React.Fragment>
 				<Header />
-				<MovieDetails movieData={movieData} />
-			</React.Fragment>
-			}
+			        {!showDetails ? <div>loading...</div> :
+			        <MovieDetails
+			        classes={classes}
+			        config={config}
+			        movieData={movieData} />}
 			</React.Fragment>
 			);
 	}
 }
 
-const mapStateToProps = state => {
-	return { movieData : state.movieDetails}
-}
+const mapStateToProps = state => ({
+	config : state.configuration,
+	movieData : state.movieDetails
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchMovieDetails: id => dispatch(fetchMovieDetails(id))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieDetailsPageContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(MovieDetailsPageContainer));
