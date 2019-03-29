@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchMovieDetails } from '../../actions';
+import { fetchMovieDetails, fetchMovieCredits } from '../../actions';
 
 import Header from '../header/Header';
 import MovieDetails from './MovieDetails';
@@ -108,12 +108,13 @@ class MovieDetailsPageContainer extends React.Component {
 
 	fetchData(id) {
 		this.props.fetchMovieDetails(id);
+		this.props.fetchMovieCredits(id);
 	}
 
 	render() {
 
 		const { showDetails } = this.state;
-		const { classes, movieData, config } = this.props;
+		const { classes, movieData, config, movieCredits } = this.props;
 
 		return (
 			<React.Fragment>
@@ -122,7 +123,8 @@ class MovieDetailsPageContainer extends React.Component {
 			        <MovieDetails
 			        classes={classes}
 			        config={config}
-			        movieData={movieData} />}
+			        movieData={movieData}
+			        movieCredits={movieCredits} />}
 			</React.Fragment>
 			);
 	}
@@ -130,11 +132,13 @@ class MovieDetailsPageContainer extends React.Component {
 
 const mapStateToProps = state => ({
 	config : state.configuration,
-	movieData : state.movieDetails
+	movieData : state.movieDetails,
+	movieCredits : state.movieCredits
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchMovieDetails: id => dispatch(fetchMovieDetails(id))
+  fetchMovieDetails: id => dispatch(fetchMovieDetails(id)),
+  fetchMovieCredits: id => dispatch(fetchMovieCredits(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(MovieDetailsPageContainer));

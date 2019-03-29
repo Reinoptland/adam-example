@@ -22,6 +22,10 @@ const MovieDetails = ({ classes, config, movieData }) => (
 				<h2 className={classes.summaryTitle}>Summary</h2>
 				<p>{movieData.overview}</p>
 				</Paper>
+				<div className={classes.castContainer}>
+					<h2>Cast</h2>
+					
+				</div>
 			</div>
 		</main>
 	);

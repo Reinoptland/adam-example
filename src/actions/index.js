@@ -56,6 +56,20 @@ export const fetchMovieDetails = (id) => {
 	}
 };
 
+export const fetchMovieCredits = (id) => {
+
+	const ApiKey = process.env.REACT_APP_API_KEY;
+
+	const Url = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${ApiKey}`;
+
+	
+	return async (dispatch) => {
+		const response = await axios.get(Url);
+		dispatch({type : 'FETCH_MOVIE_CREDITS', payload : response.data});
+
+	}
+};
+
 export const fetchPopularMovies = () => {
 
 	const ApiKey = process.env.REACT_APP_API_KEY;
