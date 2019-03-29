@@ -52,6 +52,12 @@ const styles = theme => ({
       maxWidth: '70%'
     }
   },
+  summaryContainer: {
+  	padding: '5px'
+  },
+  summaryTitle: {
+  	margin: '5px'
+  },
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing.unit * 6,

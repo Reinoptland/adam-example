@@ -1,4 +1,5 @@
 import React from 'react';
+import Paper from '@material-ui/core/Paper';
 
 const MovieDetails = ({ classes, config, movieData }) => (
 		<main>
@@ -17,10 +18,10 @@ const MovieDetails = ({ classes, config, movieData }) => (
 				</div>
 			</div>
 			<div className={classes.mainContainer}>
-				<div className={classes.summary}>
-				<h2>Summary</h2>
+				<Paper className={classes.summaryContainer} elevation={1}>
+				<h2 className={classes.summaryTitle}>Summary</h2>
 				<p>{movieData.overview}</p>
-				</div>
+				</Paper>
 			</div>
 		</main>
 	);
