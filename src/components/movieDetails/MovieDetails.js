@@ -13,7 +13,7 @@ const MovieDetails = ({ classes, config, movieData }) => (
 						<div className={classes.infoRating}>
 							<p>{movieData.vote_average}</p>
 						</div>
-						<p>{movieData.release_date.slice(0,4)} | {movieData.genres[0].name}</p>
+						<p>{movieData.release_date.slice(0,4)} | {movieData.genres.map(genre => (genre.name + ' / '))}</p>
 					</div>				
 				</div>
 			</div>
