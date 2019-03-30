@@ -1,5 +1,4 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 
@@ -20,10 +19,11 @@ const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer }
 				</div>
 			</div>
 			<div className={classes.mainContainer}>
-				<Paper className={classes.summaryContainer} elevation={1}>
-				<h2 className={classes.containerTitle}>Summary</h2>
-				<p>{movieData.overview}</p>
-				</Paper>
+				<div className={classes.summaryContainer}>
+					<h2 className={classes.containerTitle}>Summary</h2>
+					<p>{movieData.overview}</p>
+					<hr className={classes.divider} />
+				</div>
 				<div className={classes.castContainer}>
 					<h2 className={classes.containerTitle}>Cast</h2>
 					<Grid container justify="center" alignItems="flex-start" className={classes.avatarsContainer}>
@@ -43,14 +43,16 @@ const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer }
 						})
 					}
 					</Grid>
-				</div>
-					<Paper className={classes.trailerContainer} elevation={1}>
+					<hr className={classes.divider} />
+				</div>			
+				<div className={classes.trailerContainer}>
 					<h2 className={classes.containerTitle}>Trailer</h2>
 					{movieTrailer.slice(0,1).map(trailer => (
-						<iframe key={trailer.id} src={`https://www.youtube.com/embed/${trailer.key}`} width="80%" height="100%" title={trailer.name}></iframe>
+						<iframe key={trailer.id} src={`https://www.youtube.com/embed/${trailer.key}`} width="80%" height="100%" border="none" title={trailer.name}></iframe>
 						))
 					}
-					</Paper>
+				</div>
+				<hr className={classes.divider} />
 			</div>
 		</main>
 	);

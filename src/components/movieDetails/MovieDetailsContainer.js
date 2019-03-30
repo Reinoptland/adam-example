@@ -52,12 +52,23 @@ const styles = theme => ({
       maxWidth: '70%'
     }
   },
+  divider: {
+  	backgroundImage: 'radial-gradient(circle, rgb(178, 187, 239) 0%, rgba(210,208,208,0) 90%)',
+    border: 'none',
+    marginTop: 30,
+    height: 2
+  },
   containerTitle: {
+  	color: '#002984',
   	margin: 5,
   	textAlign: 'center'
   },	
   summaryContainer: {
-  	padding: '10px'
+  	padding: '10px',
+  	width: '100%'
+  },
+  castContainer: {
+  	marginTop: 100
   },
   avatarWrapper: {
   	flexBasis: '15%'
@@ -78,11 +89,11 @@ const styles = theme => ({
   	textAlign: 'center'
   },
   trailerContainer: {
+  	marginTop: 100,
   	display: 'flex',
   	flexDirection: 'column',
   	alignItems: 'center',
   	height: 450,
-  	marginTop: 20,
   	padding: '10px'
   },
   footer: {
@@ -99,12 +110,6 @@ class MovieDetailsPageContainer extends React.Component {
 	}
 
 	componentDidMount() {
-		// Check to see if config en movieData is already been fetched:
-		if(!(Object.keys(this.props.config).length === 0)
-			&& !(Object.keys(this.props.movieData).length === 0)) {
-			console.log('didmount, all data is alreay been fetched!')
-		this.setState({showDetails : true});
-		}
 		// Fetch Data, pass id used in url:
 		this.fetchData(this.props.match.params.id);
 	}
