@@ -3,6 +3,8 @@ import React from 'react';
 import Footer from '../footer/Footer';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
+import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
 
 
 const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer }) => (
@@ -51,9 +53,10 @@ const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer }
 				</div>			
 				<div className={classes.trailerContainer}>
 					<h2 className={classes.containerTitle}>Trailer</h2>
-					{movieTrailer.slice(0,1).map(trailer => (
+					{movieTrailer.length > 0 ? movieTrailer.slice(0,1).map(trailer => (
 						<iframe key={trailer.id} src={`https://www.youtube.com/embed/${trailer.key}`} width="80%" height="100%" border="none" title={trailer.name}></iframe>
 						))
+					: <Typography color="secondary" variant="subheading">No Trailer Available</Typography>
 					}
 				</div>
 				<hr className={classes.divider} />
