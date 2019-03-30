@@ -53,7 +53,7 @@ const styles = theme => ({
     }
   },
   summaryContainer: {
-  	padding: '5px'
+  	padding: '10px'
   },
   summaryTitle: {
   	margin: '5px'
