@@ -1,8 +1,12 @@
 import React from 'react';
+
+import Footer from '../footer/Footer';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 
+
 const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer }) => (
+	<React.Fragment>
 		<main>
 			<div
 				className={classes.headerMovieDetails}
@@ -55,6 +59,8 @@ const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer }
 				<hr className={classes.divider} />
 			</div>
 		</main>
+		<Footer />
+	</React.Fragment>
 	);
 
 export default MovieDetails;
