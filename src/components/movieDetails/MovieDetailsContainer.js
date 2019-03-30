@@ -69,10 +69,12 @@ const styles = theme => ({
   avatarCharacterName: {
   	fontSize: 14,
   	margin: '0.5em 0',
-  	fontWeight: 500
+  	fontWeight: 500,
+  	textAlign: 'center'
   },
   avatarPersonName: {
-  	fontSize: 12
+  	fontSize: 12,
+  	textAlign: 'center'
   },
   footer: {
     backgroundColor: theme.palette.background.paper,

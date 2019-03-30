@@ -26,7 +26,7 @@ const MovieDetails = ({ classes, config, movieData, movieCredits }) => (
 				</Paper>
 				<div className={classes.castContainer}>
 					<h2>Cast</h2>
-					<Grid container justify="center" alignItems="space-around" className={classes.avatarsContainer}>
+					<Grid container justify="center" alignItems="start" className={classes.avatarsContainer}>
 					{movieCredits.cast.slice(0,5).map((person, i) => {
 							return (
 								<div className={classes.avatarWrapper}>
