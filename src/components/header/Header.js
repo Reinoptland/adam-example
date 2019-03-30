@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { header } from '../../styles/styles';
 
@@ -23,6 +24,12 @@ const Header = (props) => {
 	              Movie Selector
 	            </Typography>
 	          </Toolbar>
+	          <nav className={classes.navBar}>
+	          	<ul>
+	          		<li><Link to={`/`}>Home</Link></li>
+	          		<li><Link to={`/search`}>Search</Link></li>
+	          	</ul>
+	          </nav>
 	        </AppBar>
 	          </React.Fragment>
 			);
