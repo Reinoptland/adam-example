@@ -84,11 +84,6 @@ class Home extends React.Component {
                         </Button>
                       </Link>
                     </Grid>
-                    <Grid item>
-                      <Button variant="outlined" color="primary">
-                        Random Movie
-                      </Button>
-                    </Grid>
                   </Grid>
                 </div>
               </div>
