@@ -42,6 +42,22 @@ export const fetchMovies = (selectedGenres, minRating, maxRating, minYear, maxYe
 	}
 };
 
+export const fetchRandomMovies = () => {
+
+	const ApiKey = process.env.REACT_APP_API_KEY;
+	//Create random number between 1 and 1000:
+	const pageNumber = Math.floor(Math.random() * 1000);
+
+	const Url = `https://api.themoviedb.org/3/discover/movie?api_key=${ApiKey}c&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}`;
+
+	
+	return async (dispatch) => {
+		const response = await axios.get(Url);
+		dispatch({type : 'FETCH_RANDOM_MOVIES', payload : response.data.results});
+
+	}
+};
+
 export const fetchMovieDetails = (id) => {
 
 	const ApiKey = process.env.REACT_APP_API_KEY;
