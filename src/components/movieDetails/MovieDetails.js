@@ -26,12 +26,11 @@ const MovieDetails = ({ classes, config, movieData, movieCredits }) => (
 				</Paper>
 				<div className={classes.castContainer}>
 					<h2>Cast</h2>
-					<Grid container justify="center" alignItems="start" className={classes.avatarsContainer}>
+					<Grid container justify="center" alignItems="flex-start" className={classes.avatarsContainer}>
 					{movieCredits.cast.slice(0,5).map((person, i) => {
 							return (
-								<div className={classes.avatarWrapper}>
+								<div key={person.id} className={classes.avatarWrapper}>
 									<Avatar
-									key={person.id}
 									alt={person.name}
 									src={config.images.secure_base_url +
 										config.images.profile_sizes[1] +
