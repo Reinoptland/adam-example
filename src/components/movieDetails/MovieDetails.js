@@ -1,7 +1,9 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Avatar from '@material-ui/core/Avatar';
 
-const MovieDetails = ({ classes, config, movieData }) => (
+const MovieDetails = ({ classes, config, movieData, movieCredits }) => (
 		<main>
 			<div
 				className={classes.headerMovieDetails}
@@ -24,7 +26,24 @@ const MovieDetails = ({ classes, config, movieData }) => (
 				</Paper>
 				<div className={classes.castContainer}>
 					<h2>Cast</h2>
-					
+					<Grid container justify="center" alignItems="space-around" className={classes.avatarsContainer}>
+					{movieCredits.cast.slice(0,5).map((person, i) => {
+							return (
+								<div className={classes.avatarWrapper}>
+									<Avatar
+									key={person.id}
+									alt={person.name}
+									src={config.images.secure_base_url +
+										config.images.profile_sizes[1] +
+										person.profile_path}
+									className={classes.avatar} />
+								<div className={classes.avatarCharacterName}>{person.character}</div>
+								<div className={classes.avatarPersonName}>{person.name}</div>
+								</div>
+								);
+						})
+					}
+					</Grid>
 				</div>
 			</div>
 		</main>

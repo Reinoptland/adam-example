@@ -58,6 +58,22 @@ const styles = theme => ({
   summaryTitle: {
   	margin: '5px'
   },
+  avatarWrapper: {
+  	flexBasis: '15%'
+  },
+  avatar: {
+  	margin: 20,
+  	width: 80,
+  	height: 80
+  },
+  avatarCharacterName: {
+  	fontSize: 14,
+  	margin: '0.5em 0',
+  	fontWeight: 500
+  },
+  avatarPersonName: {
+  	fontSize: 12
+  },
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing.unit * 6,
@@ -85,7 +101,7 @@ class MovieDetailsPageContainer extends React.Component {
 	componentDidUpdate(prevProps) {
 		console.log(this.props);
 		// If all fetch has been completed show the data (count according to number of fetches):
-		if(this.state.count === 2) {
+		if(this.state.count === 3) {
       		this.setState({showDetails : true, count : 0});
     	}
 		if(prevProps.movieData !== this.props.movieData) {
@@ -103,6 +119,10 @@ class MovieDetailsPageContainer extends React.Component {
 			if(!(Object.keys(this.props.movieData).length === 0 && this.props.movieData.constructor === Object)) {
 				this.setState({showDetails : true});
 			}
+		}
+		if(prevProps.movieCredits !== this.props.movieCredits) {
+			console.log('count inside movieCredits')
+			this.setState({count : this.state.count + 1});
 		}
 	}
 
