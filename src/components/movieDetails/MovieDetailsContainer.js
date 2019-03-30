@@ -52,11 +52,12 @@ const styles = theme => ({
       maxWidth: '70%'
     }
   },
+  containerTitle: {
+  	margin: 5,
+  	textAlign: 'center'
+  },	
   summaryContainer: {
   	padding: '10px'
-  },
-  summaryTitle: {
-  	margin: '5px'
   },
   avatarWrapper: {
   	flexBasis: '15%'
@@ -75,6 +76,14 @@ const styles = theme => ({
   avatarPersonName: {
   	fontSize: 12,
   	textAlign: 'center'
+  },
+  trailerContainer: {
+  	display: 'flex',
+  	flexDirection: 'column',
+  	alignItems: 'center',
+  	height: 450,
+  	marginTop: 20,
+  	padding: '10px'
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -103,7 +112,7 @@ class MovieDetailsPageContainer extends React.Component {
 	componentDidUpdate(prevProps) {
 		console.log(this.props);
 		// If all fetch has been completed show the data (count according to number of fetches):
-		if(this.state.count === 3) {
+		if(this.state.count === 4) {
       		this.setState({showDetails : true, count : 0});
     	}
 		if(prevProps.movieData !== this.props.movieData) {
@@ -126,6 +135,10 @@ class MovieDetailsPageContainer extends React.Component {
 			console.log('count inside movieCredits')
 			this.setState({count : this.state.count + 1});
 		}
+		if(prevProps.movieTrailer !== this.props.movieTrailer) {
+			console.log('count inside movieTrailer')
+			this.setState({count : this.state.count + 1});
+		}
 	}
 
 	fetchData(id) {
@@ -137,7 +150,7 @@ class MovieDetailsPageContainer extends React.Component {
 	render() {
 
 		const { showDetails } = this.state;
-		const { classes, movieData, config, movieCredits } = this.props;
+		const { classes, movieData, config, movieCredits, movieTrailer } = this.props;
 
 		return (
 			<React.Fragment>
@@ -147,7 +160,8 @@ class MovieDetailsPageContainer extends React.Component {
 			        classes={classes}
 			        config={config}
 			        movieData={movieData}
-			        movieCredits={movieCredits} />}
+			        movieCredits={movieCredits}
+			        movieTrailer={movieTrailer} />}
 			</React.Fragment>
 			);
 	}
