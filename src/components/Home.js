@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 
 import { 
   fetchPopularMovies,
   fetchTopRatedMovies,
-  fetchUpcomingMovies
+  fetchUpcomingMovies,
+  fetchRandomMovies
   } from '../actions';
 
 import { styles } from './styles';
@@ -25,7 +27,9 @@ class Home extends React.Component {
     super();
     this.state = {
       showCarousel : false,
-      count : 0
+      count : 0,
+      randomMovieId : '',
+      redirectRandomMovie : false
     }
   }
 
@@ -48,6 +52,11 @@ class Home extends React.Component {
     if(prevProps.upcomingMovies !== this.props.upcomingMovies) {
       this.setState({count : this.state.count + 1});
     }
+
+    // Check if fetchRandomMovies() has been called:
+    if(prevProps.randomMovies !== this.props.randomMovies) {
+      this.selectRandomMovie();
+    }
   }
 
   fetchMovies = () => {
@@ -56,13 +65,26 @@ class Home extends React.Component {
     this.props.fetchUpcomingMovies();
   }
 
+  getRandomMovie() {
+    this.props.fetchRandomMovies();
+  }
+
+  selectRandomMovie() {
+    const movieList = this.props.randomMovies;
+
+    // Select a movieId from array (random number between 0 and 19)
+    const randomMovieId = movieList[Math.floor(Math.random() * 19)].id;
+    this.setState({randomMovieId, redirectRandomMovie : true});
+  }
+
   render() {
 
-  const { showCarousel } = this.state;
+  const { showCarousel, randomMovieId, redirectRandomMovie } = this.state;
   const { classes, configuration, popularMovies, topRatedMovies, upcomingMovies } = this.props;
 
   return (
-      <React.Fragment>
+    <React.Fragment>
+      {redirectRandomMovie ? <Redirect push to={`/movie/${randomMovieId}`} /> : null}
         <Header />
         <main>
         <div className={classes.heroUnit}>
@@ -83,6 +105,11 @@ class Home extends React.Component {
                           Search for movies
                         </Button>
                       </Link>
+                    </Grid>
+                    <Grid item>
+                      <Button variant="outlined" color="primary" onClick={this.getRandomMovie.bind(this)}>
+                        Pick a random movie
+                      </Button>
                     </Grid>
                   </Grid>
                 </div>
@@ -109,13 +136,15 @@ const mapStateToProps = state => ({
   configuration : state.configuration,
   popularMovies : state.popularMovies,
   topRatedMovies : state.topRatedMovies,
-  upcomingMovies : state.upcomingMovies
+  upcomingMovies : state.upcomingMovies,
+  randomMovies : state.randomMovies
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchPopularMovies: url => dispatch(fetchPopularMovies()),
-  fetchTopRatedMovies: url => dispatch(fetchTopRatedMovies()),
-  fetchUpcomingMovies: url => dispatch(fetchUpcomingMovies())
+  fetchPopularMovies: () => dispatch(fetchPopularMovies()),
+  fetchTopRatedMovies: () => dispatch(fetchTopRatedMovies()),
+  fetchUpcomingMovies: () => dispatch(fetchUpcomingMovies()),
+  fetchRandomMovies: () => dispatch(fetchRandomMovies())
 });
 
 Home.propTypes = {
