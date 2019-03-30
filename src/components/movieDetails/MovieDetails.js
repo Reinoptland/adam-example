@@ -4,8 +4,6 @@ import Footer from '../footer/Footer';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
-
 
 const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer }) => (
 	<React.Fragment>
