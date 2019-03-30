@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { 
@@ -77,13 +78,15 @@ class Home extends React.Component {
                 <div className={classes.heroButtons}>
                   <Grid container spacing={16} justify="center">
                     <Grid item>
-                      <Button variant="contained" color="primary">
-                        Search for movies
-                      </Button>
+                      <Link to={`/search`} >
+                        <Button variant="contained" color="primary">
+                          Search for movies
+                        </Button>
+                      </Link>
                     </Grid>
                     <Grid item>
                       <Button variant="outlined" color="primary">
-                        Random Search
+                        Random Movie
                       </Button>
                     </Grid>
                   </Grid>
