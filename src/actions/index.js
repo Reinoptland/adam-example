@@ -70,6 +70,19 @@ export const fetchMovieCredits = (id) => {
 	}
 };
 
+export const fetchMovieTrailer = (id) => {
+
+	const ApiKey = process.env.REACT_APP_API_KEY;
+
+	const Url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${ApiKey}&language=en-US`;
+	
+	return async (dispatch) => {
+		const response = await axios.get(Url);
+		dispatch({type : 'FETCH_MOVIE_TRAILER', payload : response.data.results});
+
+	}
+};
+
 export const fetchPopularMovies = () => {
 
 	const ApiKey = process.env.REACT_APP_API_KEY;

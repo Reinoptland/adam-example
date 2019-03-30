@@ -45,6 +45,9 @@ const MovieDetails = ({ classes, config, movieData, movieCredits }) => (
 					}
 					</Grid>
 				</div>
+				<div className={classes.trailerContainer}>
+
+				</div>
 			</div>
 		</main>
 	);

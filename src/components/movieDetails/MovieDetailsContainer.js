@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchMovieDetails, fetchMovieCredits } from '../../actions';
+import { fetchMovieDetails, fetchMovieCredits, fetchMovieTrailer } from '../../actions';
 
 import Header from '../header/Header';
 import MovieDetails from './MovieDetails';
@@ -129,6 +129,7 @@ class MovieDetailsPageContainer extends React.Component {
 	fetchData(id) {
 		this.props.fetchMovieDetails(id);
 		this.props.fetchMovieCredits(id);
+		this.props.fetchMovieTrailer(id);
 	}
 
 	render() {
@@ -153,12 +154,14 @@ class MovieDetailsPageContainer extends React.Component {
 const mapStateToProps = state => ({
 	config : state.configuration,
 	movieData : state.movieDetails,
-	movieCredits : state.movieCredits
+	movieCredits : state.movieCredits,
+	movieTrailer : state.movieTrailer
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchMovieDetails: id => dispatch(fetchMovieDetails(id)),
-  fetchMovieCredits: id => dispatch(fetchMovieCredits(id))
+  fetchMovieCredits: id => dispatch(fetchMovieCredits(id)),
+  fetchMovieTrailer: id => dispatch(fetchMovieTrailer(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(MovieDetailsPageContainer));

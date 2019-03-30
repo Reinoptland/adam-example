@@ -7,6 +7,7 @@ import fetchUpcomingMoviesReducer from './fetchUpcomingMoviesReducer';
 import fetchMoviesReducer from './fetchMoviesReducer';
 import fetchMovieDetailsReducer from './fetchMovieDetailsReducer';
 import fetchMovieCreditsReducer from './fetchMovieCreditsReducer';
+import fetchMovieTrailerReducer from './fetchMovieTrailerReducer';
 
 export default combineReducers({
 	configuration : fetchConfigurationReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
 	upcomingMovies : fetchUpcomingMoviesReducer,
 	searchResults : fetchMoviesReducer,
 	movieDetails : fetchMovieDetailsReducer,
-	movieCredits : fetchMovieCreditsReducer
+	movieCredits : fetchMovieCreditsReducer,
+	movieTrailer : fetchMovieTrailerReducer
 });
