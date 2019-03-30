@@ -117,24 +117,12 @@ class MovieDetailsPageContainer extends React.Component {
 	componentDidUpdate(prevProps) {
 		console.log(this.props);
 		// If all fetch has been completed show the data (count according to number of fetches):
-		if(this.state.count === 4) {
+		if(this.state.count === 3) {
       		this.setState({showDetails : true, count : 0});
     	}
 		if(prevProps.movieData !== this.props.movieData) {
 			console.log('count inside movieData')
 			this.setState({count : this.state.count + 1});
-			// Check if configuration is alreaded fetched:
-			if(!(Object.keys(this.props.config).length === 0 && this.props.config.constructor === Object)) {
-				this.setState({showDetails : true});
-			}
-		}
-		if(prevProps.config !== this.props.config) {
-			console.log('count inside config')
-			this.setState({count : this.state.count + 1});
-			// Check if movieData is alreaded fetched:
-			if(!(Object.keys(this.props.movieData).length === 0 && this.props.movieData.constructor === Object)) {
-				this.setState({showDetails : true});
-			}
 		}
 		if(prevProps.movieCredits !== this.props.movieCredits) {
 			console.log('count inside movieCredits')

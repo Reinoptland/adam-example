@@ -10,9 +10,9 @@ const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer }
 		<main>
 			<div
 				className={classes.headerMovieDetails}
-				style={{ background: `linear-gradient(0deg, rgb(0, 0, 0) 5%, rgba(0, 0, 0, 0.45) 92%) center center no-repeat, url(${config.images.secure_base_url + config.images.backdrop_sizes[3] + movieData.backdrop_path}) center top no-repeat`}}>
+				style={config.images ? { background: `linear-gradient(0deg, rgb(0, 0, 0) 5%, rgba(0, 0, 0, 0.45) 92%) center center no-repeat, url(${config.images.secure_base_url + config.images.backdrop_sizes[3] + movieData.backdrop_path}) center top no-repeat`} : {}}>
 				<div className={classes.infoContainer}>
-					<img className={classes.infoImg} src={config.images.secure_base_url + config.images.poster_sizes[0] + movieData.poster_path} alt={movieData.title} />
+					<img className={classes.infoImg} src={config.images ? config.images.secure_base_url + config.images.poster_sizes[0] + movieData.poster_path : {}} alt={movieData.title} />
 					<div className={classes.infoDetails}>
 						<h1>{movieData.title}</h1>
 						<div className={classes.infoRating}>
@@ -36,9 +36,9 @@ const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer }
 								<div key={person.id} className={classes.avatarWrapper}>
 									<Avatar
 									alt={person.name}
-									src={config.images.secure_base_url +
+									src={config.images ? config.images.secure_base_url +
 										config.images.profile_sizes[1] +
-										person.profile_path}
+										person.profile_path : {}}
 									className={classes.avatar} />
 								<div className={classes.avatarCharacterName}>{person.character}</div>
 								<div className={classes.avatarPersonName}>{person.name}</div>
