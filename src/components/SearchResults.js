@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -38,8 +39,9 @@ const styles = theme => ({
   	display: 'flex',
   	flexDirection: 'column'
   },
-  button: {
-    alignSelf: 'flex-end'
+  link: {
+  	alignSelf: 'flex-end',
+  	textDecoration: 'none'
   }
 });
 
@@ -94,9 +96,11 @@ class SearchResults extends Component {
 								                
 								            </Grid>
 								          </Grid>
+								          	<Link className={classes.link} to={`/movie/${movie.id}`}>
 								           <Button className={classes.button} size="small" color="primary">
 								           	View More
 								           </Button>
+								           </Link>
 							      	</CardContent>
 							    </Card>
 	              			</Grid>
