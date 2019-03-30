@@ -72,9 +72,11 @@ class SearchResults extends Component {
 	            		{movies.map(movie => (
 	              			<Grid key={movie.id} item>
 	                			<Card className={classes.card}>
+	                				<Link to={`/movie/${movie.id}`}>
 	                				<ButtonBase className={classes.image}>
 	                					<img className={classes.img} alt={movie.title} src={`${configuration.images.base_url + configuration.images.poster_sizes[2] + movie.poster_path}`} />
 	                				</ButtonBase>
+	                				</Link>
 							      	<CardContent className={classes.content}>
 								         <Grid item xs={12} sm container>
 								            <Grid item xs container direction="column" spacing={8}>

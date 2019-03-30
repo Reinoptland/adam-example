@@ -78,7 +78,7 @@ class Home extends React.Component {
                 <div className={classes.heroButtons}>
                   <Grid container spacing={16} justify="center">
                     <Grid item>
-                      <Link to={`/search`} >
+                      <Link className={classes.link} to={`/search`} >
                         <Button variant="contained" color="primary">
                           Search for movies
                         </Button>

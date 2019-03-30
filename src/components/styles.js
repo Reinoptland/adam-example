@@ -16,6 +16,9 @@ export const styles = theme => ({
   heroButtons: {
     marginTop: theme.spacing.unit * 4,
   },
+  link: {
+    textDecoration: 'none'
+  },
   layout: {
     width: 'auto',
     marginLeft: theme.spacing.unit * 3,
