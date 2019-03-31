@@ -103,8 +103,8 @@ const Footer = (props) => {
                     {trendingMovies ? trendingMovies.map((movie, i) => {
                       if(i < 5) {
                         return (
-                        <Link to={`/movie/${movie.id}`}>
-                        <ListItem key={i} button>
+                        <Link key={i} to={`/movie/${movie.id}`}>
+                        <ListItem button>
                           <ListItemAvatar>
                             <Avatar className={classes.avatar}>
                             {i === 0 ? '1' : i + 1}
@@ -123,10 +123,10 @@ const Footer = (props) => {
                   </List>
             </Grid>
             <Grid item xs={2}>
-              <Paper className={classes.paper}><a href="#"><img className={classes.themoviedbLogo} src={TMDBLogo} alt="TMDB Logo"/></a></Paper>
+              <img className={classes.themoviedbLogo} src={TMDBLogo} alt="TMDB Logo"/>
             </Grid>
             <Grid className={classes.copyright} item xs={12}>
-                <p>Copyright &copy; {year} - Code and design by <a href="#" target="_blank" rel="noopener noreferrer">Adam Trincas</a></p>
+                <p style={{color : '#3f51b5'}}>Copyright &copy; {year} - Code and design by <a href="https://www.adamtrincas.com" target="_blank" rel="noopener noreferrer">Adam Trincas</a></p>
             </Grid>
           </Grid>
         </footer>
