@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import TMDBLogo from '../../imgs/TMDBLogo.svg';
 
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/icons/Menu';
