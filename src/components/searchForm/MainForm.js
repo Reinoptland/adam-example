@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchMovies } from '../../actions';
 
 import Header from '../header/Header';
+import Footer from '../footer/Footer';
 import GenresField from './GenresField';
 import UserRatingsField from './UserRatingsField';
 import ReleaseYearField from './ReleaseYearField';
@@ -39,7 +40,7 @@ class MainForm extends React.Component {
 	}
 
 	componentWillMount() {
-		console.log(this.props)
+		console.log(this.props.movieData);
 	}
 
 	componentWillUpdate() {
@@ -181,7 +182,11 @@ class MainForm extends React.Component {
 			<React.Fragment>
 			<Header />
 			{formField}
-			{showSearchResults ? <SearchResults /> : null}
+			{showSearchResults ?
+				<React.Fragment>
+				<SearchResults />
+				<Footer />
+				</React.Fragment> : null}
 			</React.Fragment>
 			);
 		
