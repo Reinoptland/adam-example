@@ -114,12 +114,11 @@ class SearchResults extends Component {
   	}
 }
 
-const mapStateToProps = state => {
-		return {
+const mapStateToProps = state => ({
 			configuration : state.configuration,
 			genresArr : state.genresArray,
-			movies : state.searchResults,};
-	};
+			movies : state.searchResults
+});
 
 SearchResults.propTypes = {
   classes: PropTypes.object.isRequired,
