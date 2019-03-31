@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import themoviedbLogo from '../../imgs/themoviedbLogo.png';
+import TMDBLogo from '../../imgs/TMDBLogo.svg';
 
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -123,7 +123,7 @@ const Footer = (props) => {
                   </List>
             </Grid>
             <Grid item xs={2}>
-              <Paper className={classes.paper}><a href="#"><img className={classes.themoviedbLogo} src={themoviedbLogo} alt="TMDB Logo"/></a></Paper>
+              <Paper className={classes.paper}><a href="#"><img className={classes.themoviedbLogo} src={TMDBLogo} alt="TMDB Logo"/></a></Paper>
             </Grid>
             <Grid className={classes.copyright} item xs={12}>
                 <p>Copyright &copy; {year} - Code and design by <a href="#" target="_blank" rel="noopener noreferrer">Adam Trincas</a></p>
