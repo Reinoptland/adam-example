@@ -1,5 +1,7 @@
 import React from 'react';
 
+import questionMark from '../../imgs/questionMark.svg';
+
 import Footer from '../footer/Footer';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
@@ -36,9 +38,9 @@ const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer, 
 								<div key={person.id} className={classes.avatarWrapper}>
 									<Avatar
 									alt={person.name}
-									src={config.images ? config.images.secure_base_url +
+									src={person.profile_path && config.images ? config.images.secure_base_url +
 										config.images.profile_sizes[1] +
-										person.profile_path : null}
+										person.profile_path : questionMark}
 									className={classes.avatar} />
 								<div className={classes.avatarCharacterName}>{person.character}</div>
 								<div className={classes.avatarPersonName}>{person.name}</div>
