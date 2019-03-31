@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
-const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer }) => (
+const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer, trendingMovies }) => (
 	<React.Fragment>
 		<main>
 			<div
@@ -60,7 +60,7 @@ const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer }
 				<hr className={classes.divider} />
 			</div>
 		</main>
-		<Footer />
+		<Footer trendingMovies={trendingMovies} />
 	</React.Fragment>
 	);
 

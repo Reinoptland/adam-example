@@ -37,6 +37,8 @@ const styles = theme => ({
       alignSelf: 'center'
     },
     title: {
+      color: '#3f51b5',
+      textTransform: 'uppercase',
       marginLeft: 10
     },
     avatar: {
@@ -50,6 +52,14 @@ const styles = theme => ({
     },
     copyright: {
       textAlign: 'center'
+    },
+    trendingList: {
+      display: 'flex',
+      flexDirection: 'column',
+      '& a': {
+        color: '#3f51b5',
+        textDecoration: 'none'
+      }
     }
 });
 
@@ -58,14 +68,14 @@ const year = today.getFullYear();
 
 const Footer = (props) => {
 
-	const { classes } = props;
+	const { classes, trendingMovies } = props;
 
 	return (
 		<footer className={classes.footer}>
           <Grid container spacing={24}>
             <Grid className={classes.navContainer} item xs={5}>
               <div className={classes.gridHeader}>
-                <Menu className={classes.headerIcon} />
+                <Menu className={classes.headerIcon} color="primary" />
                 <Typography variant="h6" className={classes.title}>
                   Navigation
                 </Typography>
@@ -84,42 +94,32 @@ const Footer = (props) => {
             </Grid>
             <Grid item xs={5}>
               <div className={classes.gridHeader}>
-                <TrendingUp />
+                <TrendingUp className={classes.headerIcon} color="primary" />
                 <Typography variant="h6" className={classes.title}>
                   Trending Movies
                   </Typography>
               </div>
                   <List className={classes.trendingList} dense={true}>
-                      <ListItem button>
-                        <ListItemAvatar>
-                          <Avatar className={classes.avatar}>
-                          1
-                          </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText
-                          primary="How to Train Your Dragon: The Hidden World"
-                        />
-                      </ListItem>
-                      <ListItem button>
-                        <ListItemAvatar>
-                          <Avatar className={classes.avatar}>
-                          2
-                          </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText
-                          primary="How to Train Your Dragon: The Hidden World"
-                        />
-                      </ListItem>
-                      <ListItem button>
-                        <ListItemAvatar>
-                          <Avatar className={classes.avatar}>
-                          3
-                          </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText
-                          primary="How to Train Your Dragon: The Hidden World"
-                        />
-                      </ListItem>
+                    {trendingMovies ? trendingMovies.map((movie, i) => {
+                      if(i < 5) {
+                        return (
+                        <Link to={`/movie/${movie.id}`}>
+                        <ListItem key={i} button>
+                          <ListItemAvatar>
+                            <Avatar className={classes.avatar}>
+                            {i === 0 ? '1' : i + 1}
+                            </Avatar>
+                          </ListItemAvatar>
+                          <ListItemText
+                            primary={movie.title}
+                          />
+                        </ListItem> 
+                        </Link>
+                        )
+                      } else {
+                        return null
+                      }
+                      }) : null}
                   </List>
             </Grid>
             <Grid item xs={2}>

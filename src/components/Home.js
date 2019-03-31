@@ -8,7 +8,8 @@ import {
   fetchPopularMovies,
   fetchTopRatedMovies,
   fetchUpcomingMovies,
-  fetchRandomMovies
+  fetchRandomMovies,
+  fetchTrendingMovies
   } from '../actions';
 
 import { styles } from './styles';
@@ -63,6 +64,7 @@ class Home extends React.Component {
     this.props.fetchPopularMovies();
     this.props.fetchTopRatedMovies();
     this.props.fetchUpcomingMovies();
+    this.props.fetchTrendingMovies();
   }
 
   getRandomMovie() {
@@ -80,7 +82,7 @@ class Home extends React.Component {
   render() {
 
   const { showCarousel, randomMovieId, redirectRandomMovie } = this.state;
-  const { classes, configuration, popularMovies, topRatedMovies, upcomingMovies } = this.props;
+  const { classes, configuration, popularMovies, topRatedMovies, upcomingMovies, trendingMovies } = this.props;
 
   return (
     <React.Fragment>
@@ -126,7 +128,7 @@ class Home extends React.Component {
             }
           </div>
         </main>
-        <Footer />
+        <Footer trendingMovies={trendingMovies} />
       </React.Fragment>
     );
   }
@@ -137,14 +139,16 @@ const mapStateToProps = state => ({
   popularMovies : state.popularMovies,
   topRatedMovies : state.topRatedMovies,
   upcomingMovies : state.upcomingMovies,
-  randomMovies : state.randomMovies
+  randomMovies : state.randomMovies,
+  trendingMovies : state.trendingMovies
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchPopularMovies: () => dispatch(fetchPopularMovies()),
   fetchTopRatedMovies: () => dispatch(fetchTopRatedMovies()),
   fetchUpcomingMovies: () => dispatch(fetchUpcomingMovies()),
-  fetchRandomMovies: () => dispatch(fetchRandomMovies())
+  fetchRandomMovies: () => dispatch(fetchRandomMovies()),
+  fetchTrendingMovies: () => dispatch(fetchTrendingMovies())
 });
 
 Home.propTypes = {
