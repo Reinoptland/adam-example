@@ -132,6 +132,8 @@ class MovieDetailsPageContainer extends React.Component {
     // Check to see if trending movie link has been clicked:
     if(prevProps.match.params.id !== this.props.match.params.id) {
       this.fetchData(this.props.match.params.id);
+      // Make sure the page will load at the top:
+      window.scrollTo(0,0);
     }
 	}
 
