@@ -38,7 +38,7 @@ const MovieDetails = ({ classes, config, movieData, movieCredits, movieTrailer, 
 									alt={person.name}
 									src={config.images ? config.images.secure_base_url +
 										config.images.profile_sizes[1] +
-										person.profile_path : {}}
+										person.profile_path : null}
 									className={classes.avatar} />
 								<div className={classes.avatarCharacterName}>{person.character}</div>
 								<div className={classes.avatarPersonName}>{person.name}</div>
