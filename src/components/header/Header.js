@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import LocalMovies from '@material-ui/icons/LocalMovies';
+import Search from '@material-ui/icons/Search';
 import { withStyles } from '@material-ui/core/styles';
 
 const Header = (props) => {
@@ -18,16 +19,17 @@ const Header = (props) => {
 			<React.Fragment>
 				<CssBaseline />
 	        <AppBar position="static" className={classes.appBar}>
-	          <Toolbar>
+	          <Toolbar className={classes.link}>
+	          	<Link to={`/`}>
 	            <LocalMovies className={classes.icon} />
 	            <Typography variant="h6" color="inherit" noWrap>
 	              Movie Selector
 	            </Typography>
+	            </Link>
 	          </Toolbar>
 	          <nav className={classes.navBar}>
 	          	<ul>
-	          		<li><Link to={`/`}>Home</Link></li>
-	          		<li><Link to={`/search`}>Search</Link></li>
+	          		<li><Link to={`/search`}>Search<Search /></Link></li>
 	          	</ul>
 	          </nav>
 	        </AppBar>

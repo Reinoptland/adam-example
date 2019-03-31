@@ -2,7 +2,27 @@ export const header = theme => ({
   appBar: {
     color: '#aaa',
     position: 'relative',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  link: {
+    color: 'inherit',
+    textDecoration: 'none',
+    '& a': {
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            padding: 15,
+            textDecoration: 'none',
+            color: '#aaa',
+            margin: '0 10'
+          },
+          '& a, a:after, a:before': {
+            transition: 'all .5s'
+          },
+          '& a:hover': {
+            color: '#fff'
+          }
   },
   icon: {
     marginRight: theme.spacing.unit * 2,
@@ -15,7 +35,6 @@ export const header = theme => ({
         },
           '& a': {
             position: 'relative',
-            display: 'block',
             padding: 15,
             textDecoration: 'none',
             color: '#aaa',
