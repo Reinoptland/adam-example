@@ -128,6 +128,11 @@ class MovieDetailsPageContainer extends React.Component {
 		if(prevProps.movieTrailer !== this.props.movieTrailer) {
 			this.setState({count : this.state.count + 1});
 		}
+
+    // Check to see if trending movie link has been clicked:
+    if(prevProps.match.params.id !== this.props.match.params.id) {
+      this.fetchData(this.props.match.params.id);
+    }
 	}
 
 	fetchData(id) {
