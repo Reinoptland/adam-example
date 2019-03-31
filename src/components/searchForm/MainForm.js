@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { fetchMovies } from '../../actions';
+import { fetchMovies, fetchTrendingMovies } from '../../actions';
 
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
@@ -32,8 +32,13 @@ class MainForm extends React.Component {
 
 	componentDidMount() {
 
+		// Check if trening movies has to be fetched:
+		if(this.props.trendingMovies.length === 0) {
+		this.props.fetchTrendingMovies();
+		}
+
 		// Check if movies has already been fetched:
-		if(this.props.movies.length > 0) {
+		if(this.props.movies.length > 0 && this.props.trendingMovies.length > 0) {
 			this.setState({showSearchResults : true});
 		}
 		//Fetch GenresArray from movieDB:
@@ -118,16 +123,12 @@ class MainForm extends React.Component {
 		});
 	}
 
-	componentWillUnmount() {
-		console.log('form unmounted');
-	}
-
-
 	render() {
 
 		const { step, showForm, showSearchResults, genresArray, selectedGenres,
 				minRating, maxRating, minYear, maxYear, sortBy } = this.state;
 		const values = { selectedGenres, minRating, maxRating, minYear, maxYear, sortBy };
+		const { trendingMovies } = this.props;
 
 		// Decide which form-field to show:
 		let formField;
@@ -182,7 +183,7 @@ class MainForm extends React.Component {
 			{showSearchResults ?
 				<React.Fragment>
 				<SearchResults />
-				<Footer />
+				<Footer trendingMovies={trendingMovies} />
 				</React.Fragment> : null}
 			</React.Fragment>
 			);
@@ -191,8 +192,9 @@ class MainForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-	movies : state.searchResults
+	movies : state.searchResults,
+	trendingMovies : state.trendingMovies
 });
 
 
-export default connect(mapStateToProps, { fetchMovies })(MainForm);
+export default connect(mapStateToProps, { fetchMovies, fetchTrendingMovies })(MainForm);
