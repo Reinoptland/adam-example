@@ -115,21 +115,17 @@ class MovieDetailsPageContainer extends React.Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		console.log(this.props);
 		// If all fetch has been completed show the data (count according to number of fetches):
 		if(this.state.count === 3) {
       		this.setState({showDetails : true, count : 0});
     	}
 		if(prevProps.movieData !== this.props.movieData) {
-			console.log('count inside movieData')
 			this.setState({count : this.state.count + 1});
 		}
 		if(prevProps.movieCredits !== this.props.movieCredits) {
-			console.log('count inside movieCredits')
 			this.setState({count : this.state.count + 1});
 		}
 		if(prevProps.movieTrailer !== this.props.movieTrailer) {
-			console.log('count inside movieTrailer')
 			this.setState({count : this.state.count + 1});
 		}
 	}
