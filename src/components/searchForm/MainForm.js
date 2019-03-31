@@ -31,20 +31,17 @@ class MainForm extends React.Component {
 	}
 
 	componentDidMount() {
+
+		// Check if movies has already been fetched:
+		if(this.props.movies.length > 0) {
+			this.setState({showSearchResults : true});
+		}
 		//Fetch GenresArray from movieDB:
 		const ApiKey = process.env.REACT_APP_API_KEY;
 
 		//Collect genresArray inside state:
 		axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${ApiKey}&language=en-US`)
 			.then((response) => this.setState({genresArray : response.data.genres}));
-	}
-
-	componentWillMount() {
-		console.log(this.props.movieData);
-	}
-
-	componentWillUpdate() {
-		console.log(this.props)
 	}
 
 	nextStep = () => {
@@ -193,5 +190,9 @@ class MainForm extends React.Component {
 	}
 }
 
+const mapStateToProps = state => ({
+	movies : state.searchResults
+});
 
-export default connect(null, { fetchMovies })(MainForm);
+
+export default connect(mapStateToProps, { fetchMovies })(MainForm);
