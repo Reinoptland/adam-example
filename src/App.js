@@ -28,13 +28,6 @@ class App extends Component {
 		}
 	}
 
-	/*
-	<div style={{width: '50%', margin: '0 auto'}}>
-	        {this.state.showMainForm ? <MainForm /> : null}
-	        {this.state.showSearchResults ? <SearchResults /> : null}
-	        </div>
-	*/
-
 	render() {
 	    return (
 	    	<React.Fragment>
