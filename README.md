@@ -8,9 +8,9 @@
 ### What I learned
 
 * Fetch and display data from MovieDB API
-* Design the UI with the use of Material-UI framework.
+* Design the UI with the use of the Material-UI framework.
 * Use Redux for state management.
-* 
+* Build a multi-step form and use collected form values to fetch a list of movies.
 
 ## Installation and Setup Instructions
 
@@ -29,7 +29,7 @@ npm install npm@latest -g
 2. Clone the repo
 
 ```
-git clone https://github.com/atrincas/
+git clone https://github.com/atrincas/movie-selector.git
 ```
 
 3. Run npm install inside project root directory
@@ -44,7 +44,7 @@ npm install
 npm run start
 ```
 
-5. Play
+5. Start exploring
 
 ```
 Enjoy! :)
