@@ -112,7 +112,7 @@ const Footer = (props) => {
                           <ListItemText
                             primary={movie.title}
                           />
-                        </ListItem> 
+                        </ListItem>
                         </Link>
                         )
                       } else {
@@ -125,7 +125,7 @@ const Footer = (props) => {
               <img className={classes.themoviedbLogo} src={TMDBLogo} alt="TMDB Logo"/>
             </Grid>
             <Grid className={classes.copyright} item xs={12}>
-                <p style={{color : '#3f51b5'}}>Copyright &copy; {year} - Code and design by <a href="https://www.adamtrincas.com" target="_blank" rel="noopener noreferrer">Adam Trincas</a></p>
+                <p style={{color : '#3f51b5'}}>Copyright &copy; {year} - Code and design by <a href="https://github.com/atrincas" target="_blank" rel="noopener noreferrer">Adam Trincas</a></p>
             </Grid>
           </Grid>
         </footer>
