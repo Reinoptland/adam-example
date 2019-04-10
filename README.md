@@ -1,6 +1,7 @@
 # Movie Selector
 
-.
+React application to browse your favorite movies.
+
 [Live Demo](https://atrincas-movieselector.herokuapp.com).
 
 ![Movie Selector](./src/imgs/movie-selector.png)
