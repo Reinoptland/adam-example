@@ -62,3 +62,51 @@ export const header = theme => ({
     marginTop: theme.spacing.unit * 4,
   }
 });
+
+export const footer = theme => ({
+  footer: {
+      backgroundColor: theme.palette.background.paper,
+      padding: theme.spacing.unit * 6
+    },
+    navContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      '& a': {
+        color: '#3f51b5',
+        textDecoration: 'none',
+        textTransform: 'uppercase'
+      }
+    },
+    gridHeader: {
+      display: 'inline-flex'
+    },
+    headerIcon: {
+      alignSelf: 'center'
+    },
+    title: {
+      color: '#3f51b5',
+      textTransform: 'uppercase',
+      marginLeft: 10
+    },
+    avatar: {
+      width: 25,
+      height: 25,
+      fontStyle: 'italic'
+    },
+    themoviedbLogo: {
+      width: 190,
+      float: 'right'
+    },
+    copyright: {
+      textAlign: 'center'
+    },
+    trendingList: {
+      display: 'flex',
+      flexDirection: 'column',
+      '& a': {
+        color: '#3f51b5',
+        textDecoration: 'none'
+      }
+    }
+});

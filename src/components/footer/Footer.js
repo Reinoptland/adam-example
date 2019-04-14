@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import TMDBLogo from '../../imgs/TMDBLogo.svg';
 
+import { footer } from '../../styles/';
+
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
@@ -13,54 +15,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
-
-const styles = theme => ({
-	footer: {
-	    backgroundColor: theme.palette.background.paper,
-	    padding: theme.spacing.unit * 6
-  	},
-    navContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      '& a': {
-        color: '#3f51b5',
-        textDecoration: 'none',
-        textTransform: 'uppercase'
-      }
-    },
-    gridHeader: {
-      display: 'inline-flex'
-    },
-    headerIcon: {
-      alignSelf: 'center'
-    },
-    title: {
-      color: '#3f51b5',
-      textTransform: 'uppercase',
-      marginLeft: 10
-    },
-    avatar: {
-      width: 25,
-      height: 25,
-      fontStyle: 'italic'
-    },
-    themoviedbLogo: {
-      width: 190,
-      float: 'right'
-    },
-    copyright: {
-      textAlign: 'center'
-    },
-    trendingList: {
-      display: 'flex',
-      flexDirection: 'column',
-      '& a': {
-        color: '#3f51b5',
-        textDecoration: 'none'
-      }
-    }
-});
 
 const today = new Date();
 const year = today.getFullYear();
@@ -132,4 +86,4 @@ const Footer = (props) => {
 		);
 }
 
-export default withStyles(styles)(Footer);
+export default withStyles(footer)(Footer);
