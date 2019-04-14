@@ -10,7 +10,7 @@ import UserRatingsField from './UserRatingsField';
 import ReleaseYearField from './ReleaseYearField';
 import SortByField from './SortByField';
 import Confirmation from './Confirmation';
-import SearchResults from '../SearchResults';
+import SearchResults from '../searchResults/SearchResults';
 
 class MainForm extends React.Component {
 
