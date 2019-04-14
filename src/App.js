@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { fetchConfiguration } from './actions';
 
-import Home from './components/Home';
+import Home from './components/home/Home';
 import MainForm from './components/searchForm/MainForm';
 import MovieDetailsContainer from './components/movieDetails/MovieDetailsContainer';
 import PageNotFound from './components/pageNotFound';

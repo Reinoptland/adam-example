@@ -10,12 +10,12 @@ import {
   fetchUpcomingMovies,
   fetchRandomMovies,
   fetchTrendingMovies
-  } from '../actions';
+  } from '../../actions';
 
-import { styles } from './styles';
-import Header from './header/Header';
-import Footer from './footer/Footer';
-import Carousel from './carousel/Carousel';
+import { homeStyles } from '../../styles';
+import Header from '../header/Header';
+import Footer from '../footer/Footer';
+import Carousel from '../carousel/Carousel';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -150,4 +150,4 @@ Home.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Home));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(homeStyles)(Home));
