@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 
+import { searchResultsStyles } from '../../styles';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -10,40 +11,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ButtonBase from '@material-ui/core/ButtonBase';
-
-//CSS styles:
-const styles = theme => ({
-  root: {
-    flexGrow: 1
-  },
-  control: {
-    padding: theme.spacing.unit * 2
-  },
-  card: {
-  	display: 'flex',
-    width: 850,
-  },
-  image: {
-  	minwidth: 154
-  },
-  img: {
-    margin: 'auto',
-    display: 'block',
-    Width: '100%'
-  },
-  subtitle: {
-  	display: 'flex',
-  	justifyContent: 'space-between'
-  },
-  content: {
-  	display: 'flex',
-  	flexDirection: 'column'
-  },
-  link: {
-  	alignSelf: 'flex-end',
-  	textDecoration: 'none'
-  }
-});
 
 class SearchResults extends Component {
 
@@ -124,4 +91,4 @@ SearchResults.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(SearchResults));
+export default connect(mapStateToProps)(withStyles(searchResultsStyles)(SearchResults));

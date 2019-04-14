@@ -172,6 +172,39 @@ export const homeStyles = theme => ({
   }
 });
 
+export const searchResultsStyles = theme => ({
+  root: {
+    flexGrow: 1
+  },
+  control: {
+    padding: theme.spacing.unit * 2
+  },
+  card: {
+    display: 'flex',
+    width: 850,
+  },
+  image: {
+    minwidth: 154
+  },
+  img: {
+    margin: 'auto',
+    display: 'block',
+    Width: '100%'
+  },
+  subtitle: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  content: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  link: {
+    alignSelf: 'flex-end',
+    textDecoration: 'none'
+  }
+});
+
 export const movieDetailsStyles = theme => ({
   appBar: {
     position: 'relative',
