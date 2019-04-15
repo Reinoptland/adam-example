@@ -10,9 +10,12 @@ import TextField from '@material-ui/core/TextField';
 const styles = theme => ({
   container: {
     display: 'flex',
-    height: 200,
+    height: 190,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+	    	flexDirection: 'column'
+	    }
   },
   root: {
     ...theme.mixins.gutters(),
@@ -20,6 +23,12 @@ const styles = theme => ({
 	    paddingTop: theme.spacing.unit * 2,
 	    paddingBottom: theme.spacing.unit * 2,
 	    height: 350
+  	},
+  title: {
+  	[theme.breakpoints.down('sm')]: {
+  			fontSize: '1em',
+  			textAlign: 'center'
+  		}
   	},
   textField: {
     marginLeft: theme.spacing.unit,
@@ -57,7 +66,7 @@ class ReleaseYearField extends React.Component {
 
 		return (
 				<Paper className={classes.root} elevation={3}>
-					<h2>Choose Release Year</h2>
+					<h2 className={classes.title}>Choose Release Year</h2>
 				  <form className={classes.container} noValidate autoComplete="off">
 				  	<TextField
 			          id="minimum-year"

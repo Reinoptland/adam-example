@@ -15,7 +15,7 @@ const styles = theme => ({
 	    display: 'flex',
 	    justifyContent: 'center',
 	    alignItems: 'center',
-	    height: 200,
+	    height: 190,
 	    [theme.breakpoints.down('sm')]: {
 	    	flexDirection: 'column'
 	    }

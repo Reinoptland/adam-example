@@ -14,7 +14,7 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 200
+    height: 190
   },
   root: {
     ...theme.mixins.gutters(),
@@ -22,6 +22,12 @@ const styles = theme => ({
 	    paddingTop: theme.spacing.unit * 2,
 	    paddingBottom: theme.spacing.unit * 2,
 	    height: 350
+  	},
+  	title: {
+  	[theme.breakpoints.down('sm')]: {
+  			fontSize: '1em',
+  			textAlign: 'center'
+  		}
   	},
   formControl: {
     margin: theme.spacing.unit,
@@ -64,7 +70,7 @@ class SortByField extends React.Component {
 
 		return (
 			<Paper className={classes.root} elevation={3}>
-			<h2>Choose Sorting Value</h2>
+			<h2 className={classes.title}>Choose Sorting Value</h2>
 	    	<form className={classes.container}>
 	        <FormControl className={classes.formControl}>
 	          <InputLabel htmlFor="sort-value">Sort By</InputLabel>

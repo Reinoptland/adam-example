@@ -26,12 +26,19 @@ const styles = theme => ({
 	    margin: '20px 20%',
 	    paddingTop: theme.spacing.unit * 2,
 	    paddingBottom: theme.spacing.unit * 2,
-	    height: 350
+	    height: 350,
+	    [theme.breakpoints.down('370')]: {
+	    	height: '100%'
+	    }
   	},
   footer: {
   	display: 'flex',
   	width: '100%',
-  	justifyContent: 'space-evenly'
+  	justifyContent: 'space-evenly',
+  	[theme.breakpoints.down('350')]: {
+  		flexDirection: 'column',
+  		alignItems: 'center'
+  	}
   },
    wrapper: {
     margin: theme.spacing.unit,
