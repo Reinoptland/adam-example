@@ -27,7 +27,7 @@ const styles = theme => ({
 	    paddingTop: theme.spacing.unit * 2,
 	    paddingBottom: theme.spacing.unit * 2,
 	    height: 350,
-	    [theme.breakpoints.down('370')]: {
+	    [theme.breakpoints.down('470')]: {
 	    	height: '100%'
 	    }
   	},
