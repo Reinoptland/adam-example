@@ -21,13 +21,22 @@ const styles = theme => ({
 	    display: 'flex',
 	    flexDirection: 'column',
 	    justifyContent: 'space-between',
-	    height: 350
+	    height: '100%'
   	},
   	formControl: {
 	    width: '100%'
   	},
   	formGroup: {
-	  	display: 'block'
+	  	display: 'flex',
+	  	flexDirection: 'row',
+	  	flexWrap: 'wrap',
+	  	justifyContent: 'flex-start',
+	  	[theme.breakpoints.down('sm')]: {
+	  		justifyContent: 'center'
+	  	}
+  	},
+  	genreBox: {
+  		flexBasis: 150
   	},
   	errorText: {
   		display: 'block',
@@ -94,7 +103,8 @@ class GenresField extends React.Component {
 		          						value={genre.name} />
 		          				}
 		          				key={genre.id}
-		          				label={genre.name} />
+		          				label={genre.name}
+		          				className={classes.genreBox} />
 		          	})}
 		          </FormGroup> 
 		        </FormControl>
