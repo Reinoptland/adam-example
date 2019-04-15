@@ -25,8 +25,8 @@ const Footer = (props) => {
 
 	return (
 		<footer className={classes.footer}>
-          <Grid container spacing={24}>
-            <Grid className={classes.navContainer} item xs={5}>
+          <Grid container className={classes.gridContainer}>
+            <Grid className={classes.navContainer}>
               <div className={classes.gridHeader}>
                 <Menu className={classes.headerIcon} color="primary" />
                 <Typography variant="h6" className={classes.title}>
@@ -45,7 +45,7 @@ const Footer = (props) => {
                   </ListItem>
               </List>
             </Grid>
-            <Grid item xs={5}>
+            <Grid className={classes.trendingContainer}>
               <div className={classes.gridHeader}>
                 <TrendingUp className={classes.headerIcon} color="primary" />
                 <Typography variant="h6" className={classes.title}>
@@ -75,10 +75,10 @@ const Footer = (props) => {
                       }) : null}
                   </List>
             </Grid>
-            <Grid item xs={2}>
+            <Grid className={classes.logoContainer}>
               <img className={classes.themoviedbLogo} src={TMDBLogo} alt="TMDB Logo"/>
             </Grid>
-            <Grid className={classes.copyright} item xs={12}>
+            <Grid className={classes.copyrightContainer}>
                 <p style={{color : '#3f51b5'}}>Copyright &copy; {year} - Code and design by <a href="https://github.com/atrincas" target="_blank" rel="noopener noreferrer">Adam Trincas</a></p>
             </Grid>
           </Grid>

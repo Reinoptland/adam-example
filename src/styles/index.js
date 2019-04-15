@@ -68,7 +68,28 @@ export const footer = theme => ({
       backgroundColor: theme.palette.background.paper,
       padding: theme.spacing.unit * 6
     },
+    gridContainer : {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr 1fr',
+      [theme.breakpoints.down('sm')]: {
+        gridTemplateColumns: '1fr 2fr'
+      },
+      [theme.breakpoints.down(700)]: {
+        gridTemplateColumns: '1fr'
+      }
+    },
     navContainer: {
+      [theme.breakpoints.down('sm')]: {
+        gridColumn: 'span 2'
+      },
+      [theme.breakpoints.down(700)]: {
+        gridColumn: 'span 3',
+        flexDirection: 'row',
+        margin: '0 0 3rem 6rem'
+      },
+      [theme.breakpoints.down(550)]: {
+        display: 'none'
+      },
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -76,6 +97,11 @@ export const footer = theme => ({
         color: '#3f51b5',
         textDecoration: 'none',
         textTransform: 'uppercase'
+      }
+    },
+    navList: {
+      [theme.breakpoints.down(700)]: {
+        display: 'flex'
       }
     },
     gridHeader: {
@@ -87,19 +113,54 @@ export const footer = theme => ({
     title: {
       color: '#3f51b5',
       textTransform: 'uppercase',
-      marginLeft: 10
+      marginLeft: 10,
+      [theme.breakpoints.down(700)]: {
+        display: 'none'
+      }
     },
     avatar: {
       width: 25,
       height: 25,
       fontStyle: 'italic'
     },
+    logoContainer: {
+      [theme.breakpoints.down('sm')]: {
+        gridRow: 2
+      },
+      [theme.breakpoints.down(700)]: {
+        gridRow: 3,
+        gridColumn: 1
+      }
+    },
     themoviedbLogo: {
       width: 190,
-      float: 'right'
+      float: 'right',
+      [theme.breakpoints.down('sm')]: {
+        width: 130,
+        float: 'left'
+      },
+      [theme.breakpoints.down(700)]: {
+        width: 100,
+      }
     },
-    copyright: {
+    copyrightContainer: {
+      [theme.breakpoints.down('sm')]: {
+        gridRow: 2
+      },
+      [theme.breakpoints.down(700)]: {
+        gridRow: 3,
+        fontSize: '0.7rem'
+      },
+      gridColumn: 'span 3',
       textAlign: 'center'
+    },
+    trendingContainer: {
+      [theme.breakpoints.down('sm')]: {
+        gridColumn: 3
+      },
+      [theme.breakpoints.down(700)]: {
+        display: 'none'
+      }
     },
     trendingList: {
       display: 'flex',
