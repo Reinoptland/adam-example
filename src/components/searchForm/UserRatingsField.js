@@ -15,7 +15,10 @@ const styles = theme => ({
 	    display: 'flex',
 	    justifyContent: 'center',
 	    alignItems: 'center',
-	    height: 200
+	    height: 200,
+	    [theme.breakpoints.down('sm')]: {
+	    	flexDirection: 'column'
+	    }
 	},
 	root: {
     ...theme.mixins.gutters(),
@@ -23,6 +26,12 @@ const styles = theme => ({
 	    paddingTop: theme.spacing.unit * 2,
 	    paddingBottom: theme.spacing.unit * 2,
 	    height: 350
+  	},
+  	title: {
+  		[theme.breakpoints.down('sm')]: {
+  			fontSize: '1em',
+  			textAlign: 'center'
+  		}
   	},
   	footer: {
 	  	display: 'flex',
@@ -66,7 +75,7 @@ class UserRatingsField extends React.Component {
 
 		return (
 	    	<Paper className={classes.root} elevation={3}>
-	    	<h2>Choose User Rating</h2>
+	    	<h2 className={classes.title}>Choose User Rating</h2>
 	    	<div className={classes.userRatingWrapper}>
 	        <FormControl className={classes.formControl}>
 	          <InputLabel htmlFor="min-rating">Minimum Rating</InputLabel>
