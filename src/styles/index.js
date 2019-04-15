@@ -340,8 +340,16 @@ export const movieDetailsStyles = theme => ({
     textAlign: 'center'
   },  
   summaryContainer: {
+    margin: '0 auto',
     padding: '10px',
-    width: '100%'
+    width: '50%',
+    textAlign: 'center',
+    [theme.breakpoints.down('1480')]: {
+      width: '75%'
+    },
+    [theme.breakpoints.down('1080')]: {
+      width: '90%'
+    }
   },
   castContainer: {
     marginTop: 100
@@ -370,7 +378,14 @@ export const movieDetailsStyles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     height: 450,
-    padding: '10px'
+    padding: '10px',
+    [theme.breakpoints.down('743')]: {
+      height: 350,
+      margin: 25
+    },
+    [theme.breakpoints.down('400')]: {
+      height: 250
+    }
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
