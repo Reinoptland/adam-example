@@ -9,8 +9,6 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import ButtonBase from '@material-ui/core/ButtonBase';
 
 class SearchResults extends Component {
 
@@ -38,12 +36,9 @@ class SearchResults extends Component {
 	          			<Grid container justify="center" spacing={16}>
 	            		{movies.map(movie => (
 	              			<Grid key={movie.id} item>
+	              				<Link className={classes.link} to={`/movie/${movie.id}`}>
 	                			<Card className={classes.card}>
-	                				<Link to={`/movie/${movie.id}`}>
-	                				<ButtonBase className={classes.image}>
 	                					<img className={classes.img} alt={movie.title} src={`${configuration.images.base_url + configuration.images.poster_sizes[2] + movie.poster_path}`} />
-	                				</ButtonBase>
-	                				</Link>
 							      	<CardContent className={classes.content}>
 								         <Grid item xs={12} sm container>
 								            <Grid item xs container direction="column" spacing={8}>
@@ -60,18 +55,14 @@ class SearchResults extends Component {
 									                	{this.displayGenres(movie.genre_ids)}
 									                </Typography>
 								                </div>
-								                <Typography variant="body2">{movie.overview}</Typography>
+								                <Typography className={classes.overview} variant="body2">{movie.overview}</Typography>
 								               </Grid>
 								                
 								            </Grid>
 								          </Grid>
-								          	<Link className={classes.link} to={`/movie/${movie.id}`}>
-								           <Button className={classes.button} size="small" color="primary">
-								           	View More
-								           </Button>
-								           </Link>
 							      	</CardContent>
 							    </Card>
+							    </Link>
 	              			</Grid>
 	            		))}
 	          		</Grid>

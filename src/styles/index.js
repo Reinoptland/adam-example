@@ -235,7 +235,12 @@ export const homeStyles = theme => ({
 
 export const searchResultsStyles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    marginBottom: 50,
+    [theme.breakpoints.down('md')]: {
+      flexDirection: 'column',
+      alignItems: 'center'
+    }
   },
   control: {
     padding: theme.spacing.unit * 2
@@ -243,14 +248,19 @@ export const searchResultsStyles = theme => ({
   card: {
     display: 'flex',
     width: 850,
-  },
-  image: {
-    minwidth: 154
+    [theme.breakpoints.down('md')]: {
+      width: 650
+    },
+    [theme.breakpoints.down('720')]: {
+      width: 300
+    }
   },
   img: {
-    margin: 'auto',
     display: 'block',
-    Width: '100%'
+    [theme.breakpoints.down('720')]: {
+      width: '25%',
+      height: '25%'
+    }
   },
   subtitle: {
     display: 'flex',
@@ -258,8 +268,16 @@ export const searchResultsStyles = theme => ({
   },
   content: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    [theme.breakpoints.down('720')]: {
+      padding: 8
+    },
   },
+  overview: {
+      [theme.breakpoints.down('720')]: {
+        display: 'none'
+      }
+    },
   link: {
     alignSelf: 'flex-end',
     textDecoration: 'none'
