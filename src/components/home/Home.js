@@ -9,7 +9,8 @@ import {
   fetchTopRatedMovies,
   fetchUpcomingMovies,
   fetchRandomMovies,
-  fetchTrendingMovies
+  fetchTrendingMovies,
+  fetchAll
   } from '../../actions';
 
 import { homeStyles } from '../../styles';
@@ -36,23 +37,24 @@ class Home extends React.Component {
 
   componentDidMount() {
     // Fetch movies for the movie carousel:
-    this.fetchMovies();
+    // this.fetchMovies();
+    this.props.fetchAll()
   }
 
   componentDidUpdate(prevProps){
     // If all fetch has been completed show the data (count according to number of fetches):
-    if(this.state.count === 3) {
-      this.setState({showCarousel : true, count : 0});
-    }
-    if(prevProps.popularMovies !== this.props.popularMovies) {
-      this.setState({count : this.state.count + 1});
-    }
-    if(prevProps.topRatedMovies !== this.props.topRatedMovies) {
-      this.setState({count : this.state.count + 1});
-    }
-    if(prevProps.upcomingMovies !== this.props.upcomingMovies) {
-      this.setState({count : this.state.count + 1});
-    }
+    // if(this.state.count === 3) {
+    //   this.setState({showCarousel : true, count : 0});
+    // }
+    // if(prevProps.popularMovies !== this.props.popularMovies) {
+    //   this.setState({count : this.state.count + 1});
+    // }
+    // if(prevProps.topRatedMovies !== this.props.topRatedMovies) {
+    //   this.setState({count : this.state.count + 1});
+    // }
+    // if(prevProps.upcomingMovies !== this.props.upcomingMovies) {
+    //   this.setState({count : this.state.count + 1});
+    // }
 
     // Check if fetchRandomMovies() has been called:
     if(prevProps.randomMovies !== this.props.randomMovies) {
@@ -61,6 +63,8 @@ class Home extends React.Component {
   }
 
   fetchMovies = () => {
+    // 1 x mount -> 4 x requests
+    // 1 x mount -> 1 x requests
     this.props.fetchPopularMovies();
     this.props.fetchTopRatedMovies();
     this.props.fetchUpcomingMovies();
@@ -80,9 +84,20 @@ class Home extends React.Component {
   }
 
   render() {
+  
+  console.log('Render', this.props.showCarousel)
 
-  const { showCarousel, randomMovieId, redirectRandomMovie } = this.state;
-  const { classes, configuration, popularMovies, topRatedMovies, upcomingMovies, trendingMovies } = this.props;
+  const { randomMovieId, redirectRandomMovie } = this.state;
+  
+  const { 
+    classes, 
+    configuration, 
+    popularMovies, 
+    topRatedMovies, 
+    upcomingMovies, 
+    trendingMovies,
+    showCarousel
+  } = this.props;
 
   return (
     <React.Fragment>
@@ -135,7 +150,10 @@ const mapStateToProps = state => ({
   topRatedMovies : state.topRatedMovies,
   upcomingMovies : state.upcomingMovies,
   randomMovies : state.randomMovies,
-  trendingMovies : state.trendingMovies
+  trendingMovies : state.trendingMovies,
+  showCarousel: state.popularMovies.length !== 0 
+    && state.topRatedMovies.length !== 0
+    && state.upcomingMovies.length !== 0
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -143,7 +161,8 @@ const mapDispatchToProps = dispatch => ({
   fetchTopRatedMovies: () => dispatch(fetchTopRatedMovies()),
   fetchUpcomingMovies: () => dispatch(fetchUpcomingMovies()),
   fetchRandomMovies: () => dispatch(fetchRandomMovies()),
-  fetchTrendingMovies: () => dispatch(fetchTrendingMovies())
+  fetchTrendingMovies: () => dispatch(fetchTrendingMovies()),
+  fetchAll: () => dispatch(fetchAll())
 });
 
 Home.propTypes = {

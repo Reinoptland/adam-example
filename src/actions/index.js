@@ -155,3 +155,29 @@ export const fetchUpcomingMovies = () => {
 	}
 	
 };
+
+export const fetchAll = () => {
+
+	const ApiKey = process.env.REACT_APP_API_KEY;
+
+	const urls = [`https://api.themoviedb.org/3/movie/upcoming?api_key=${ApiKey}&language=en-US&page=1`, 
+				`https://api.themoviedb.org/3/movie/top_rated?api_key=${ApiKey}&language=en-US&page=1`,
+				`https://api.themoviedb.org/3/movie/popular?api_key=${ApiKey}&language=en-US&page=1` ]
+	
+	const promises = urls.map(url => axios.get(url))
+
+	console.log(promises)
+
+	return (dispatch) => {
+		Promise.all(promises).then(([upcoming, toprated, popular]) => {
+			dispatch({ 
+				type: 'FETCH_ALL', 
+				payload: {
+				upcoming: upcoming.data.results,
+				toprated: toprated.data.results,
+				popular: popular.data.results
+				}
+			})
+		})
+	}
+}

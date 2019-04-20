@@ -31,13 +31,13 @@ class App extends Component {
 	render() {
 	    return (
 	    	<React.Fragment>
-			<Switch>
-				<Route exact path='/' component={Home} />
-				<Route path='/search' component={MainForm} />
-				<Route path='/movie/:id' component={MovieDetailsContainer} />
-				<Route component={PageNotFound} />
-			</Switch>
-			</React.Fragment>
+					<Switch>
+						<Route exact path='/' component={Home} />
+						<Route path='/search' component={MainForm} />
+						<Route path='/movie/:id' component={MovieDetailsContainer} />
+						<Route component={PageNotFound} />
+					</Switch>
+				</React.Fragment>
 	    );
   	}
 }
